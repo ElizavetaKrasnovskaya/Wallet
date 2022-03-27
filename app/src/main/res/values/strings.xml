@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CryptoWallet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    App info screen-->
+    <string name="welcome">Welcome to Your Smart Wallet</string>
+    <string name="app_info">We proudly present you crypto wallet app where you can send &amp; receive money in easy way with build in chat.</string>
+    <string name="login_here">Login here</string>
+    <string name="already_have_an_account">Already have an account</string>
+
+    <!--    Login screen-->
+    <string name="login_to_account">Login to Account</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login">Login</string>
+    <string name="register_new_account">Register new Account</string>
+    <string name="register">Register</string>
+
+</resources>

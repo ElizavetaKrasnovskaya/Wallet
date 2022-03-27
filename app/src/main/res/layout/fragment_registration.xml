@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_gradient"
+    tools:context=".ui.auth.registration.RegistrationFragment">
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:background="@drawable/ic_blockchain"
+        app:layout_constraintBottom_toTopOf="@id/mainGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mainGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <TextView
+        android:id="@+id/tvLogin"
+        style="@style/MainTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register_new_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainGuideline" />
+
+    <LinearLayout
+        android:id="@+id/llName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_l"
+        android:layout_marginTop="@dimen/common_vertical_5xl"
+        android:layout_marginEnd="@dimen/common_horizontal_l"
+        android:background="@drawable/selector_et"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogin">
+
+        <ImageView
+            android:id="@+id/ivNameIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/common_horizontal_m"
+            android:layout_marginTop="@dimen/common_vertical_l"
+            android:layout_marginBottom="@dimen/common_vertical_l"
+            android:src="@drawable/ic_user"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autofillHints="name"
+            android:background="@android:color/transparent"
+            android:hint="@string/enter_name"
+            android:importantForAutofill="no"
+            android:padding="@dimen/common_vertical_m"
+            android:textColor="@color/white"
+            android:textColorHint="@color/orange" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_l"
+        android:layout_marginTop="@dimen/common_vertical_l"
+        android:layout_marginEnd="@dimen/common_horizontal_l"
+        android:background="@drawable/selector_et"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llName">
+
+        <ImageView
+            android:id="@+id/ivPasswordIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/common_horizontal_m"
+            android:layout_marginTop="@dimen/common_vertical_l"
+            android:layout_marginBottom="@dimen/common_vertical_l"
+            android:src="@drawable/ic_user"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autofillHints="name"
+            android:background="@android:color/transparent"
+            android:hint="@string/enter_password"
+            android:importantForAutofill="no"
+            android:padding="@dimen/common_vertical_m"
+            android:textColor="@color/white"
+            android:textColorHint="@color/orange" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        style="@style/OrangeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:layout_marginBottom="@dimen/btn_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

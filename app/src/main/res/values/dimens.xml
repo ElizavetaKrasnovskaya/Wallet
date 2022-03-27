@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_horizontal_xxs">4dp</dimen>
+    <dimen name="common_horizontal_xs">8dp</dimen>
+    <dimen name="common_horizontal_s">12dp</dimen>
+    <dimen name="common_horizontal_m">16dp</dimen>
+    <dimen name="common_horizontal_l">20dp</dimen>
+    <dimen name="common_horizontal_xl">24dp</dimen>
+    <dimen name="common_horizontal_2xl">28dp</dimen>
+    <dimen name="common_horizontal_3xl">32dp</dimen>
+    <dimen name="common_horizontal_4xl">36dp</dimen>
+    <dimen name="common_horizontal_5xl">40dp</dimen>
+
+    <dimen name="common_vertical_xxs">4dp</dimen>
+    <dimen name="common_vertical_xs">8dp</dimen>
+    <dimen name="common_vertical_s">12dp</dimen>
+    <dimen name="common_vertical_m">16dp</dimen>
+    <dimen name="common_vertical_l">20dp</dimen>
+    <dimen name="common_vertical_xl">24dp</dimen>
+    <dimen name="common_vertical_2xl">28dp</dimen>
+    <dimen name="common_vertical_3xl">32dp</dimen>
+    <dimen name="common_vertical_4xl">36dp</dimen>
+    <dimen name="common_vertical_5xl">40dp</dimen>
+
+    <dimen name="text_size_xxs">4sp</dimen>
+    <dimen name="text_size_xs">8sp</dimen>
+    <dimen name="text_size_s">12sp</dimen>
+    <dimen name="text_size_m">16sp</dimen>
+    <dimen name="text_size_l">20sp</dimen>
+    <dimen name="text_size_xl">24sp</dimen>
+    <dimen name="text_size_2xl">28sp</dimen>
+    <dimen name="text_size_3xl">32sp</dimen>
+    <dimen name="text_size_4xl">36sp</dimen>
+    <dimen name="text_size_5xl">40sp</dimen>
+
+    <dimen name="icon_size">100dp</dimen>
+    <dimen name="big_icon_size">150dp</dimen>
+    <dimen name="btn_margin_bottom">60dp</dimen>
+</resources>
