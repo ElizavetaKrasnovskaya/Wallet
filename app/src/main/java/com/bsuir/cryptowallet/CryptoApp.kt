@@ -9,16 +9,18 @@ import org.matrix.android.sdk.api.MatrixConfiguration
 
 @HiltAndroidApp
 class CryptoApp : Application() {
+
     override fun onCreate() {
         super.onCreate()
-        val matrix = Matrix.createInstance(
-            this,
-        matrixConfiguration = MatrixConfiguration(
-            roomDisplayNameFallbackProvider = RoomDisplayNameFallbackProviderImpl()
-        ))
-
+        Matrix.initialize(
+            context = this,
+            matrixConfiguration = MatrixConfiguration(
+                roomDisplayNameFallbackProvider = RoomDisplayNameFallbackProviderImpl()
+            )
+        )
+        val matrix = Matrix.getInstance(this)
         val lastSession = matrix.authenticationService().getLastAuthenticatedSession()
-        if(lastSession != null){
+        if (lastSession != null) {
             SessionHolder.currentSession = lastSession
             lastSession.open()
             lastSession.startSync(true)

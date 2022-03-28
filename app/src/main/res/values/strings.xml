@@ -9,7 +9,7 @@
     <string name="login_here">Login here</string>
     <string name="already_have_an_account">Already have an account</string>
 
-    <!--    Login screen-->
+    <!--    Auth screens-->
     <string name="login_to_account">Login to Account</string>
     <string name="enter_name">Enter name</string>
     <string name="enter_password">Enter password</string>
@@ -17,4 +17,15 @@
     <string name="register_new_account">Register new Account</string>
     <string name="register">Register</string>
 
+    <!--    Wallet auth screens-->
+    <string name="create_new_smart_wallet">Create New Smart Wallet</string>
+    <string name="create_wallet_info">Create Private &amp; Secure wallet. Private keys never leave your device</string>
+    <string name="create_wallet">Create wallet</string>
+    <string name="i_already_have_a_wallet">I already have a wallet</string>
+    <string name="copy">Copy</string>
+    <string name="confirm_mnemonic">Confirm mnemonic</string>
+    <string name="import_wallet">Import wallet</string>
+    <string name="paste">Paste</string>
+    <string name="btn_import">Import</string>
+    <string name="btn_create">Create</string>
 </resources>

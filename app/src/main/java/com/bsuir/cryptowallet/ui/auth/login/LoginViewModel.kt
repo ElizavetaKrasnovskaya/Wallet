@@ -22,7 +22,7 @@ class LoginViewModel @Inject constructor(
     val session = MutableLiveData<Session>()
     val error = MutableLiveData<ApplicationError>()
 
-    private fun signIn(name: String, password: String) {
+    fun signIn(name: String, password: String) {
         viewModelScope.launch {
             when(val result = interactor.signIn(context, name, password)){
                 is Result.Success -> session.postValue(result.value!!)

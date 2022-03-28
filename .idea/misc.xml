@@ -15,6 +15,14 @@
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/layout/fragment_registration.xml" value="0.33" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/layout/fragment_splash_screen.xml" value="0.12" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/drawable/ic_wallet.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/drawable/shape_bottom_shape.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_about_app.xml" value="0.18292682926829268" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_creating_mnemonic.xml" value="0.2" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_importing_mnemonic.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_login.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_registration.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_wallet_info.xml" value="0.2" />
       </map>
     </option>
   </component>

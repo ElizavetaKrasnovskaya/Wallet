@@ -106,18 +106,19 @@
             android:background="@android:color/transparent"
             android:hint="@string/enter_password"
             android:importantForAutofill="no"
+            android:inputType="textPassword"
             android:padding="@dimen/common_vertical_m"
             android:textColor="@color/white"
             android:textColorHint="@color/orange" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnLogin"
         style="@style/OrangeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/login"
         android:layout_marginBottom="@dimen/btn_margin_bottom"
+        android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
