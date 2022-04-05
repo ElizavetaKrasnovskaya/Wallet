@@ -11,8 +11,8 @@
 
     <!--    Auth screens-->
     <string name="login_to_account">Login to Account</string>
+    <string name="enter_uid">Enter uid</string>
     <string name="enter_name">Enter name</string>
-    <string name="enter_password">Enter password</string>
     <string name="login">Login</string>
     <string name="register_new_account">Register new Account</string>
     <string name="register">Register</string>

@@ -27,5 +27,4 @@ class AboutAppFragment : BaseFragment(R.layout.fragment_about_app), View.OnClick
             R.id.tvLoginHere -> navigate(AboutAppFragmentDirections.actionAboutAppFragmentToLoginFragment())
         }
     }
-
 }

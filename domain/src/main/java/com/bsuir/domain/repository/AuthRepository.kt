@@ -1,9 +1,6 @@
 package com.bsuir.domain.repository
 
-import android.content.Context
-import com.bsuir.domain.model.Result
-import org.matrix.android.sdk.api.session.Session
-import org.matrix.android.sdk.api.session.user.model.User
+import com.cometchat.pro.models.User
 
 interface AuthRepository {
 
@@ -11,7 +8,7 @@ interface AuthRepository {
 
     fun rememberUser(name: String, password: String): Boolean
 
-    suspend fun signIn(context: Context, name: String, password: String): Result<Session?>
+    suspend fun signIn(uid: String): User?
 
-    suspend fun signUp(context: Context, name: String, password: String): Result<Session?>
+    suspend fun signUp(uid: String, name: String): User?
 }

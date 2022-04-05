@@ -46,11 +46,15 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:4.9.3"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 
-    //Matrix sdk2
-    implementation 'org.matrix.android:matrix-android-sdk2:1.4.4'
-
     //Inject annotations support
     implementation "javax.inject:javax.inject:1"
 
     implementation "androidx.security:security-crypto:1.1.0-alpha03"
+
+    //CometChat
+    implementation 'com.cometchat:pro-android-chat-sdk:3.0.4'
+    implementation 'com.cometchat:pro-android-calls-sdk:2.1.0'
+
+    //trust wallet
+    implementation "com.trustwallet:wallet-core:2.6.16"
 }

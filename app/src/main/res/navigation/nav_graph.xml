@@ -42,10 +42,40 @@
         android:id="@+id/loginFragment"
         android:name="com.bsuir.cryptowallet.ui.auth.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_walletInfoFragment"
+            app:destination="@id/walletInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.bsuir.cryptowallet.ui.auth.registration.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_walletInfoFragment"
+            app:destination="@id/walletInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/creatingMnemonicFragment"
+        android:name="com.bsuir.cryptowallet.ui.auth.wallet.CreatingMnemonicFragment"
+        android:label="fragment_creating_mnemonic"
+        tools:layout="@layout/fragment_creating_mnemonic" />
+    <fragment
+        android:id="@+id/walletInfoFragment"
+        android:name="com.bsuir.cryptowallet.ui.auth.wallet.WalletInfoFragment"
+        android:label="fragment_wallet_info"
+        tools:layout="@layout/fragment_wallet_info" >
+        <action
+            android:id="@+id/action_walletInfoFragment_to_importingMnemonicFragment"
+            app:destination="@id/importingMnemonicFragment" />
+        <action
+            android:id="@+id/action_walletInfoFragment_to_creatingMnemonicFragment"
+            app:destination="@id/creatingMnemonicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/importingMnemonicFragment"
+        android:name="com.bsuir.cryptowallet.ui.auth.wallet.ImportingMnemonicFragment"
+        android:label="fragment_importing_mnemonic"
+        tools:layout="@layout/fragment_importing_mnemonic" />
 </navigation>
