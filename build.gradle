@@ -3,6 +3,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://dl.cloudsmith.io/public/cometchat/cometchat-pro-android/maven/"
+        }
         maven { url 'https://www.jitpack.io' }
         maven { url "https://jitpack.io" }
     }

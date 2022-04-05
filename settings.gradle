@@ -12,11 +12,22 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://dl.cloudsmith.io/public/cometchat/cometchat-pro-android/maven/"
+        }
         maven { url 'https://www.jitpack.io' }
         maven { url "https://jitpack.io" }
+        maven {
+            url = uri("https://maven.pkg.github.com/trustwallet/wallet-core")
+//            credentials {
+//                username = project.findProperty("gpr.user") as String?: System.getenv("ElizavetaKrasnovskaya")
+//                password = project.findProperty("gpr.key") as String?: System.getenv("GITHUB_TOKEN")
+//            }
+        }
     }
 }
 rootProject.name = "CryptoWallet"
 include ':app'
 include ':domain'
 include ':data'
+include ':uikit-kotlin'

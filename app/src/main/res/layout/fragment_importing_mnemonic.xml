@@ -35,8 +35,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mainGuideline" />
 
-    <TextView
-        android:id="@+id/tvMnemonic"
+    <EditText
+        android:id="@+id/etMnemonic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_horizontal_5xl"
@@ -60,13 +60,13 @@
         android:text="@string/paste"
         android:textSize="@dimen/text_size_l"
         android:textColor="@color/orange"
-        app:layout_constraintTop_toBottomOf="@id/tvMnemonic"
+        app:layout_constraintTop_toBottomOf="@id/etMnemonic"
         android:layout_marginEnd="@dimen/common_vertical_l"
         android:layout_marginTop="@dimen/common_vertical_l"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCreateWallet"
+        android:id="@+id/btnImportWallet"
         style="@style/OrangeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

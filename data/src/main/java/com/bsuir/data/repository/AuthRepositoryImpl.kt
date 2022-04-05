@@ -1,32 +1,16 @@
 package com.bsuir.data.repository
 
-import android.content.Context
-import android.net.Uri
-import com.bsuir.data.const.SERVER
+import com.bsuir.data.const.AUTH_KEY
 import com.bsuir.data.source.local.SharedPreferencesDataSource
-import com.bsuir.data.utils.SessionHolder
-import com.bsuir.data.utils.safeApiCall
-import com.bsuir.domain.error.ApplicationError
-import com.bsuir.domain.model.Result
 import com.bsuir.domain.repository.AuthRepository
-import org.matrix.android.sdk.api.Matrix
-import org.matrix.android.sdk.api.auth.data.HomeServerConnectionConfig
-import org.matrix.android.sdk.api.session.Session
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.models.User
 import javax.inject.Inject
 
-class AuthRepositoryImpl @Inject constructor(private val sharedPreferences: SharedPreferencesDataSource) :
-    AuthRepository {
-
-    private val homeServerConnectionConfig by lazy {
-        try {
-            HomeServerConnectionConfig
-                .Builder()
-                .withHomeServerUri(Uri.parse(SERVER))
-                .build()
-        } catch (failure: Throwable) {
-            null
-        }
-    }
+class AuthRepositoryImpl @Inject constructor(
+    private val sharedPreferences: SharedPreferencesDataSource
+) : AuthRepository {
 
     override fun isUserLoggedIn(): Boolean {
         return sharedPreferences.fetchUserName()
@@ -40,38 +24,31 @@ class AuthRepositoryImpl @Inject constructor(private val sharedPreferences: Shar
             .isNotEmpty() && sharedPreferences.fetchUserPassword().isNotEmpty()
     }
 
-    override suspend fun signIn(
-        context: Context,
-        name: String,
-        password: String
-    ): Result<Session?> {
-        var sessionResult: Session? = null
-        try {
-            Matrix.getInstance(context).authenticationService()
-                .directAuthentication(
-                    homeServerConnectionConfig!!,
-                    name,
-                    password,
-                    "matrix-sdk-android2-sample"
-                )
+    override suspend fun signIn(uid: String): User? {
+        var result: User? = null
+        CometChat.login(uid, AUTH_KEY, object : CometChat.CallbackListener<User>() {
+            override fun onSuccess(user: User?) {
+                result = user
+            }
 
-        } catch (failure: Throwable) {
-            null
-        }?.let { session ->
-            SessionHolder.currentSession = session
-            session.open()
-            session.startSync(true)
-            sessionResult = session
-            session
-        }
-        return safeApiCall { sessionResult }
+            override fun onError(p0: CometChatException?) {
+                result = null
+            }
+        })
+        return result
     }
 
-    override suspend fun signUp(
-        context: Context,
-        name: String,
-        password: String
-    ): Result<Session?> {
-        TODO("Not yet implemented")
+    override suspend fun signUp(uid: String, name: String): User? {
+        var result: User? = null
+        CometChat.createUser(User(uid, name), AUTH_KEY, object : CometChat.CallbackListener<User>(){
+            override fun onSuccess(user: User?) {
+                result = user
+            }
+
+            override fun onError(p0: CometChatException?) {
+                result = null
+            }
+        })
+        return result
     }
 }

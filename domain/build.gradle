@@ -38,6 +38,10 @@ dependencies {
     //Inject annotations support
     implementation "javax.inject:javax.inject:1"
 
-    //Matrix sdk2
-    implementation 'org.matrix.android:matrix-android-sdk2:1.4.4'
+    //CometChat
+    implementation 'com.cometchat:pro-android-chat-sdk:3.0.4'
+    implementation 'com.cometchat:pro-android-calls-sdk:2.1.0'
+
+    //trust wallet
+    implementation "com.trustwallet:wallet-core:2.6.16"
 }

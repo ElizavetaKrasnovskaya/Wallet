@@ -18,22 +18,26 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), View.OnClickListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
+        setupListener()
     }
 
     private fun setupObserver() {
-        viewModel.session.observe(viewLifecycleOwner) {
-            toast("Cool")
+        viewModel.user.observe(viewLifecycleOwner) {
+            if (it != null) navigate(LoginFragmentDirections.actionLoginFragmentToWalletInfoFragment())
         }
         viewModel.error.observe(viewLifecycleOwner) {
-            toast(it.toString())
+            if (it != null) toast(it.message.toString())
         }
+    }
+
+    private fun setupListener(){
+        binding.btnLogin.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.btnLogin -> viewModel.signIn(
-                binding.etName.text.toString(),
-                binding.etPassword.text.toString()
+                binding.etName.text.toString()
             )
         }
     }
