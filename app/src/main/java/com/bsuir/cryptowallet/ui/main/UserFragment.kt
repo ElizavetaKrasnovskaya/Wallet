@@ -1,4 +1,4 @@
-package com.cometchat.pro.uikit.ui_components.users.user_list
+package com.bsuir.cryptowallet.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -12,17 +12,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-import android.widget.TextView.OnEditorActionListener
-import androidx.fragment.app.Fragment
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bsuir.cryptowallet.R
+import com.bsuir.cryptowallet.common.base.BaseFragment
 import com.cometchat.pro.constants.CometChatConstants
-import com.cometchat.pro.core.CometChat.CallbackListener
+import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.core.UsersRequest
-import com.cometchat.pro.core.UsersRequest.UsersRequestBuilder
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.User
-import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageListActivity
 import com.cometchat.pro.uikit.ui_components.shared.cometchatUsers.CometChatUsers
 import com.cometchat.pro.uikit.ui_components.shared.cometchatUsers.CometChatUsersAdapter
@@ -35,37 +37,8 @@ import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import com.cometchat.pro.uikit.ui_settings.enum.UserMode
 import com.facebook.shimmer.ShimmerFrameLayout
-import java.util.*
 
-/*
- * Copyright 2019 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */ /*
-
-* Purpose - CometChatUserList class is a fragment used to display list of users and perform certain action on click of item.
-            It also provide search bar to search user from the list.
-
-* @author - CometChat
-
-* @version - v1.0
-
-* Created on - 20th December 2019
-
-* Modified on  - 23rd March 2020
-
-*/
-class CometChatUserList constructor() : Fragment() {
+class UserFragment : BaseFragment(R.layout.fragment_user) {
     private var isTitleVisible: Boolean = true
     private val LIMIT: Int = 30
     private var c: Context? = null
@@ -84,18 +57,20 @@ class CometChatUserList constructor() : Fragment() {
     private var rlSearchBox: RelativeLayout? = null
     private var noUserLayout: LinearLayout? = null
     private val userList: MutableList<User> = ArrayList()
-    public override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                     savedInstanceState: Bundle?): View? {
+    public override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        val view: View = inflater.inflate(R.layout.fragment_cometchat_userlist, container, false)
-        title = view.findViewById(R.id.tv_title)
+        val view: View = inflater.inflate(R.layout.fragment_user, container, false)
+        title = view.findViewById(com.cometchat.pro.uikit.R.id.tv_title)
         title?.typeface = FontUtils.getInstance(activity).getTypeFace(FontUtils.robotoMedium)
-        rvUserList = view.findViewById(R.id.rv_user_list)
-        noUserLayout = view.findViewById(R.id.no_user_layout)
-        etSearch = view.findViewById(R.id.search_bar)
-        clearSearch = view.findViewById(R.id.clear_search)
-        rlSearchBox = view.findViewById(R.id.rl_search_box)
-        shimmerFrameLayout = view.findViewById(R.id.shimmer_layout)
+        rvUserList = view.findViewById(com.cometchat.pro.uikit.R.id.rv_user_list)
+        noUserLayout = view.findViewById(com.cometchat.pro.uikit.R.id.no_user_layout)
+        etSearch = view.findViewById(com.cometchat.pro.uikit.R.id.search_bar)
+        clearSearch = view.findViewById(com.cometchat.pro.uikit.R.id.clear_search)
+        rlSearchBox = view.findViewById(com.cometchat.pro.uikit.R.id.rl_search_box)
+        shimmerFrameLayout = view.findViewById(com.cometchat.pro.uikit.R.id.shimmer_layout)
 
         val fragment = fragmentManager?.findFragmentByTag("startChat")
         if (fragment != null && fragment.isVisible) {
@@ -113,13 +88,27 @@ class CometChatUserList constructor() : Fragment() {
 
         })
         if (Utils.isDarkMode(requireContext())) {
-            title!!.setTextColor(resources.getColor(R.color.textColorWhite))
+            title!!.setTextColor(resources.getColor(com.cometchat.pro.uikit.R.color.textColorWhite))
         } else {
-            title!!.setTextColor(resources.getColor(R.color.textColorWhite))
+            title!!.setTextColor(resources.getColor(com.cometchat.pro.uikit.R.color.textColorWhite))
         }
         etSearch!!.addTextChangedListener(object : TextWatcher {
-            public override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-            public override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            public override fun beforeTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
+            public override fun onTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
             public override fun afterTextChanged(editable: Editable) {
                 if (editable.isEmpty()) {
                     // if etSearch is empty then fetch all users.
@@ -132,8 +121,12 @@ class CometChatUserList constructor() : Fragment() {
                 }
             }
         })
-        etSearch!!.setOnEditorActionListener(object : OnEditorActionListener {
-            public override fun onEditorAction(textView: TextView, i: Int, keyEvent: KeyEvent?): Boolean {
+        etSearch!!.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            public override fun onEditorAction(
+                textView: TextView,
+                i: Int,
+                keyEvent: KeyEvent?
+            ): Boolean {
                 if (i == EditorInfo.IME_ACTION_SEARCH) {
                     searchUser(textView.text.toString())
                     clearSearch!!.visibility = View.VISIBLE
@@ -146,7 +139,8 @@ class CometChatUserList constructor() : Fragment() {
             etSearch!!.setText("")
             clearSearch!!.visibility = View.GONE
             searchUser(etSearch?.text.toString())
-            val inputMethodManager: InputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val inputMethodManager: InputMethodManager =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             // Hide the soft keyboard
             inputMethodManager.hideSoftInputFromWindow(etSearch!!.windowToken, 0)
         }
@@ -165,8 +159,7 @@ class CometChatUserList constructor() : Fragment() {
         rvUserList!!.setItemClickListener(object : OnItemClickListener<User?>() {
             public override fun OnItemClick(t: Any, position: Int) {
                 events?.OnItemClick(t as User, position)
-                val user = t as User
-                print(user)
+                //navigate(UserFragmentDirections.actionContactsFragmentToCometChatMessageList())
                 val intent = Intent(requireContext(), CometChatMessageListActivity::class.java)
                 intent.putExtra(UIKitConstants.IntentStrings.UID, (t as User).uid)
                 intent.putExtra(UIKitConstants.IntentStrings.AVATAR, t.avatar)
@@ -208,11 +201,15 @@ class CometChatUserList constructor() : Fragment() {
      */
     private fun fetchUsers() {
         if (usersRequest == null) {
-            if (UIKitSettings.userInMode == UserMode.FRIENDS) usersRequest = UsersRequestBuilder().setLimit(30)
+            if (UIKitSettings.userInMode == UserMode.FRIENDS) usersRequest =
+                UsersRequest.UsersRequestBuilder()
+                    .setLimit(30)
                     .friendsOnly(true).build()
-            else if (UIKitSettings.userInMode == UserMode.ALL_USER) usersRequest = UsersRequestBuilder().setLimit(30).build()
+            else if (UIKitSettings.userInMode == UserMode.ALL_USER) usersRequest =
+                UsersRequest.UsersRequestBuilder()
+                    .setLimit(30).build()
         }
-        usersRequest!!.fetchNext(object : CallbackListener<List<User>>() {
+        usersRequest!!.fetchNext(object : CometChat.CallbackListener<List<User>>() {
             public override fun onSuccess(users: List<User>) {
                 Log.e(TAG, "onfetchSuccess: " + users.size)
                 userList.addAll(users)
@@ -243,8 +240,9 @@ class CometChatUserList constructor() : Fragment() {
      * @see UsersRequest
      */
     private fun searchUser(s: String) {
-        val usersRequest: UsersRequest = UsersRequestBuilder().setSearchKeyword(s).setLimit(100).build()
-        usersRequest.fetchNext(object : CallbackListener<List<User?>?>() {
+        val usersRequest: UsersRequest =
+            UsersRequest.UsersRequestBuilder().setSearchKeyword(s).setLimit(100).build()
+        usersRequest.fetchNext(object : CometChat.CallbackListener<List<User?>?>() {
             public override fun onSuccess(users: List<User?>?) {
                 rvUserList!!.searchUserList(users) // set the users to rvUserList i.e CometChatUserList Component.
             }

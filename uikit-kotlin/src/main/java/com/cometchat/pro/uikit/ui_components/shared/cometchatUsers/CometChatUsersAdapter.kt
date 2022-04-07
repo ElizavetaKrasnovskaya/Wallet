@@ -1,7 +1,5 @@
 package com.cometchat.pro.uikit.ui_components.shared.cometchatUsers
 
-import com.cometchat.pro.uikit.ui_components.shared.cometchatUsers.CometChatUsersAdapter.InitialHolder
-import com.cometchat.pro.uikit.ui_components.shared.cometchatUsers.CometChatUsersAdapter.UserViewHolder
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.cometchat.pro.constants.CometChatConstants
 import com.cometchat.pro.models.User
 import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.databinding.CometchatUserListItemBinding
-import com.cometchat.pro.uikit.ui_resources.utils.sticker_header.StickyHeaderAdapter
+import com.cometchat.pro.uikit.ui_components.shared.cometchatUsers.CometChatUsersAdapter.InitialHolder
+import com.cometchat.pro.uikit.ui_components.shared.cometchatUsers.CometChatUsersAdapter.UserViewHolder
 import com.cometchat.pro.uikit.ui_resources.utils.FontUtils
-import com.cometchat.pro.uikit.ui_resources.utils.Utils
+import com.cometchat.pro.uikit.ui_resources.utils.sticker_header.StickyHeaderAdapter
 import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import java.util.*
 
@@ -28,7 +26,8 @@ import java.util.*
  * Modified on  - 23rd March 2020
  *
  */
-class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHolder>(), StickyHeaderAdapter<InitialHolder?> {
+class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHolder>(),
+    StickyHeaderAdapter<InitialHolder?> {
     private var context: Context
     private var userArrayList: MutableList<User> = ArrayList()
     private var fontUtils: FontUtils
@@ -44,7 +43,7 @@ class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHol
         this.userArrayList = userArrayList
         this.context = context
         fontUtils = FontUtils.getInstance(context)
-        FeatureRestriction.isUserPresenceEnabled(object : FeatureRestriction.OnSuccessListener{
+        FeatureRestriction.isUserPresenceEnabled(object : FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
                 userPresenceEnabled = p0
             }
@@ -53,7 +52,12 @@ class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHol
 
     override fun onCreateViewHolder(parent: ViewGroup, i: Int): UserViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val userListRowBinding: CometchatUserListItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.cometchat_user_list_item, parent, false)
+        val userListRowBinding: CometchatUserListItemBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.cometchat_user_list_item,
+            parent,
+            false
+        )
         return UserViewHolder(userListRowBinding)
     }
 
@@ -68,7 +72,9 @@ class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHol
     override fun onBindViewHolder(userViewHolder: UserViewHolder, i: Int) {
         val user = userArrayList[i]
         val user1 = if (i + 1 < userArrayList.size) userArrayList[i + 1] else null
-        if (user1 != null && user.name.toLowerCase().substring(0, 1).toCharArray()[0] == user1.name.substring(0, 1).toLowerCase().toCharArray()[0]) {
+        if (user1 != null && user.name.toLowerCase().substring(0, 1)
+                .toCharArray()[0] == user1.name.substring(0, 1).toLowerCase().toCharArray()[0]
+        ) {
             userViewHolder.userListRowBinding.tvSeprator.visibility = View.GONE
         } else {
             userViewHolder.userListRowBinding.tvSeprator.visibility = View.VISIBLE
@@ -81,19 +87,15 @@ class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHol
         userViewHolder.userListRowBinding.executePendingBindings()
         userViewHolder.userListRowBinding.avUser.setBackgroundColor(context.resources.getColor(R.color.colorPrimary))
         userViewHolder.userListRowBinding.root.setTag(R.string.user, user)
-        userViewHolder.userListRowBinding.txtUserName.typeface = fontUtils.getTypeFace(FontUtils.robotoMedium)
+        userViewHolder.userListRowBinding.txtUserName.typeface =
+            fontUtils.getTypeFace(FontUtils.robotoMedium)
         if (user.avatar == null || user.avatar.isEmpty()) {
             userViewHolder.userListRowBinding.avUser.setInitials(user.name)
         } else {
             userViewHolder.userListRowBinding.avUser.setAvatar(user.avatar)
         }
-        if (Utils.isDarkMode(context)) {
-            userViewHolder.userListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.textColorWhite))
-            userViewHolder.userListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.grey))
-        } else {
-            userViewHolder.userListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.primaryTextColor))
-            userViewHolder.userListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.light_grey))
-        }
+        userViewHolder.userListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.textColorWhite))
+        userViewHolder.userListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.borderVerification))
     }
 
     override fun getItemCount(): Int {
@@ -152,17 +154,23 @@ class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHol
 
     override fun getHeaderId(var1: Int): Long {
         val user = userArrayList[var1]
-        val name = if (user.name != null && user.name.isNotEmpty()) user.name.substring(0, 1).toUpperCase().toCharArray()[0] else '#'
+        val name =
+            if (user.name != null && user.name.isNotEmpty()) user.name.substring(0, 1).toUpperCase()
+                .toCharArray()[0] else '#'
         return name.toLong()
     }
 
     override fun onCreateHeaderViewHolder(var1: ViewGroup?): InitialHolder? {
-        return InitialHolder(LayoutInflater.from(var1!!.context).inflate(R.layout.cometchat_userlist_header, var1, false))
+        return InitialHolder(
+            LayoutInflater.from(var1!!.context)
+                .inflate(R.layout.cometchat_userlist_header, var1, false)
+        )
     }
 
     override fun onBindHeaderViewHolder(var1: Any, var2: Int, var3: Long) {
         val user = userArrayList[var2]
-        val name = if (user.name != null && user.name.isNotEmpty()) user.name.substring(0, 1).toCharArray()[0] else '#'
+        val name = if (user.name != null && user.name.isNotEmpty()) user.name.substring(0, 1)
+            .toCharArray()[0] else '#'
         var initialHolder = var1 as InitialHolder;
         initialHolder.textView.text = name.toString()
     }
@@ -230,7 +238,8 @@ class CometChatUsersAdapter(context: Context) : RecyclerView.Adapter<UserViewHol
         notifyDataSetChanged()
     }
 
-    inner class UserViewHolder(var userListRowBinding: CometchatUserListItemBinding) : RecyclerView.ViewHolder(userListRowBinding.root)
+    inner class UserViewHolder(var userListRowBinding: CometchatUserListItemBinding) :
+        RecyclerView.ViewHolder(userListRowBinding.root)
 
     inner class InitialHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView

@@ -40,6 +40,7 @@ class CometChatMessageListActivity : AppCompatActivity(), MessageAdapter.OnMessa
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cometchat_message_list)
+        supportActionBar?.hide()
 
         if (UIKitSettings.color != null)
             window.statusBarColor = Color.parseColor(UIKitSettings.color)

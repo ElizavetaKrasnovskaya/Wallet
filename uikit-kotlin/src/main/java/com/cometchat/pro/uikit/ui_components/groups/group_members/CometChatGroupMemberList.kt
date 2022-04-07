@@ -112,16 +112,16 @@ class CometChatGroupMemberList : Fragment() {
             override fun onClick(var1: View, var2: Int) {
                 val groupMember = var1.getTag(R.string.user) as GroupMember
                 if (transferOwnership) {
-                    val alertDialog = MaterialAlertDialogBuilder(activity)
-                    alertDialog.setTitle(resources.getString(R.string.make_owner))
-                    alertDialog.setMessage(String.format(resources.getString(R.string.make_owner_question), groupMember.name))
-                    alertDialog.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface: DialogInterface?, i: Int -> transferOwnerShip(groupMember) }
-                    alertDialog.setNegativeButton(resources.getString(R.string.cancel)) { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() }
-                    alertDialog.create()
-                    alertDialog.show()
+                    val alertDialog = activity?.let { MaterialAlertDialogBuilder(it) }
+                    alertDialog?.setTitle(resources.getString(R.string.make_owner))
+                    alertDialog?.setMessage(String.format(resources.getString(R.string.make_owner_question), groupMember.name))
+                    alertDialog?.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface: DialogInterface?, i: Int -> transferOwnerShip(groupMember) }
+                    alertDialog?.setNegativeButton(resources.getString(R.string.cancel)) { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() }
+                    alertDialog?.create()
+                    alertDialog?.show()
                 } else if (showModerators) {
                     if (activity != null) {
-                        val alertDialog = MaterialAlertDialogBuilder(activity)
+                        val alertDialog = MaterialAlertDialogBuilder(activity!!)
                         alertDialog.setTitle(resources.getString(R.string.make_group_moderator))
                         alertDialog.setMessage(String.format(resources.getString(R.string.make_moderator_question), groupMember.name))
                         alertDialog.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface: DialogInterface?, i: Int -> updateAsModeratorScope(groupMember) }
@@ -131,7 +131,7 @@ class CometChatGroupMemberList : Fragment() {
                     }
                 } else {
                     if (activity != null) {
-                        val alertDialog = MaterialAlertDialogBuilder(activity)
+                        val alertDialog = MaterialAlertDialogBuilder(activity!!)
                         alertDialog.setTitle(resources.getString(R.string.make_group_admin))
                         alertDialog.setMessage(String.format(resources.getString(R.string.make_admin_question), groupMember.name))
                         alertDialog.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface: DialogInterface?, i: Int -> updateAsAdminScope(groupMember) }
@@ -268,7 +268,7 @@ class CometChatGroupMemberList : Fragment() {
      */
     private fun setAdapter(groupMembers: List<GroupMember>) {
         if (groupMemberListAdapter == null) {
-            groupMemberListAdapter = GroupMemberAdapter(context!!, groupMembers, null)
+            groupMemberListAdapter = GroupMemberAdapter(requireContext(), groupMembers, null)
             rvUserList?.adapter = groupMemberListAdapter
         } else {
             groupMemberListAdapter?.updateGroupMembers(groupMembers)

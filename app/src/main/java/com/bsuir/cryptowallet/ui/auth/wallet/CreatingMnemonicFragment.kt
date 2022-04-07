@@ -39,13 +39,14 @@ class CreatingMnemonicFragment : BaseFragment(R.layout.fragment_creating_mnemoni
 
     override fun onClick(view: View) {
         when (view.id) {
-//            R.id.btnCreateWallet -> //TODO("")
+            R.id.btnCreateWallet -> navigate(CreatingMnemonicFragmentDirections.actionCreatingMnemonicFragmentToContactsFragment())
             R.id.tvCopy -> copy()
         }
     }
 
-    private fun copy(){
-        val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    private fun copy() {
+        val clipboard =
+            requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText(
             "copied",
             binding.tvMnemonic.text.toString()

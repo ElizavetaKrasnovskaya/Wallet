@@ -20,13 +20,16 @@ class CometChatStartConversation : AppCompatActivity() {
     private var tabLayout: TabLayout? = null
 
     private var adapter: TabAdapter? = null
-    private lateinit var toolbar : MaterialToolbar
+    private lateinit var toolbar: MaterialToolbar
     private val conversationType: String = UIKitSettings.conversationInMode.toString()
+
+    private var check = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_conversation_from_chat)
+        supportActionBar?.hide()
 
         toolbar = findViewById(R.id.start_chat_toolbar)
         tabLayout = findViewById(R.id.tabLayout)
@@ -46,11 +49,13 @@ class CometChatStartConversation : AppCompatActivity() {
             }
             ConversationMode.GROUP.toString() -> {
                 toolbar.title = getString(R.string.select_group)
+                toolbar.setTitleTextColor(getColor(R.color.textColorWhite))
                 tabLayout?.visibility = View.GONE;
                 adapter?.addFragment(cometChatGroupList, getString(R.string.groups));
             }
             else -> {
                 toolbar.title = getString(R.string.select_user)
+                toolbar.setTitleTextColor(getColor(R.color.textColorWhite))
                 tabLayout?.visibility = View.GONE;
                 adapter?.addFragment(cometChatUserList, getString(R.string.users));
             }
@@ -60,17 +65,26 @@ class CometChatStartConversation : AppCompatActivity() {
         viewPager?.offscreenPageLimit = 3
         tabLayout?.setupWithViewPager(viewPager)
 
+        if (check == 0) {
+            toolbar.title = getString(R.string.select_user)
+            toolbar.setTitleTextColor(getColor(R.color.textColorWhite))
+            check++
+        }
+
         tabLayout?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.position == 0) {
                     toolbar.title = getString(R.string.select_user)
+                    toolbar.setTitleTextColor(getColor(R.color.textColorWhite))
                 } else {
                     toolbar.title = getString(R.string.select_group)
+                    toolbar.setTitleTextColor(getColor(R.color.textColorWhite))
                 }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-
+                toolbar.title = getString(R.string.select_user)
+                toolbar.setTitleTextColor(getColor(R.color.textColorWhite))
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -79,8 +93,8 @@ class CometChatStartConversation : AppCompatActivity() {
 
         })
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setSupportActionBar(toolbar)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
 

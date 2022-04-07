@@ -52,7 +52,7 @@ class CometChatUserPresence : View {
 
     private fun setValues() {
         if (status == ONLINE) paint!!.color = Color.parseColor("#3BDF2F") else {
-            paint!!.color = Color.parseColor("#C4C4C4")
+            paint!!.color = Color.parseColor("#00ffffff")
         }
         invalidate()
     }
@@ -79,7 +79,7 @@ class CometChatUserPresence : View {
     protected fun init() {
         paint = Paint()
         rectF = RectF()
-        if (status == ONLINE) paint!!.color = Color.parseColor("#3BDF2F") else paint!!.color = Color.parseColor("#C4C4C4")
+        if (status == ONLINE) paint!!.color = Color.parseColor("#3BDF2F") else paint!!.color = Color.parseColor("#00ffffff")
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

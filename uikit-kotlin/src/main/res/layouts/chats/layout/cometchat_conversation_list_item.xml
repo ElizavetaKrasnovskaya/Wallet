@@ -15,8 +15,8 @@
     <RelativeLayout
         android:id="@+id/view_foreground"
         android:clickable="true"
-        android:background="?attr/selectableItemBackground"
         android:layout_width="match_parent"
+        android:background="@color/dark_purple"
         android:layout_height="72dp">
             <RelativeLayout
                 android:clickable="true"
@@ -53,9 +53,8 @@
                         android:ellipsize="end"
                         android:id="@+id/txt_user_name"
                         android:layout_width="wrap_content"
-
+                        android:textColor="@color/textColorWhite"
                         android:layout_marginStart="8dp"
-
                         android:layout_height="wrap_content"
                         tools:text="@tools:sample/full_names"
                         android:layout_marginEnd="16dp"
@@ -68,6 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
+                        android:textColor="@color/textColorWhite"
                         android:textSize="@dimen/fourteen"
                         android:layout_marginStart="8dp"
                         android:layout_below="@id/txt_user_name"
@@ -77,13 +77,12 @@
                         android:singleLine="true" />
                 </RelativeLayout>
 
-
                 <TextView
                     android:id="@+id/tvSeprator"
                     android:layout_width="match_parent"
-                    android:layout_toEndOf="@id/av_user"
-                    android:background="@color/light_grey"
+                    android:background="@color/borderVerification"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_height="0.8dp"/>
 
@@ -92,23 +91,24 @@
                     tools:visibility="visible"
                     android:id="@+id/messageTime"
                     android:layout_alignParentEnd="true"
+                    android:textColor="@color/textColorWhite"
                     android:layout_marginEnd="16dp"
                     android:textSize="12sp"
                     android:layout_alignTop="@id/rl_name_and_status_layout"
                     tools:text="11:50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <com.cometchat.pro.uikit.ui_components.shared.cometchatBadgeCount.CometChatBadgeCount
-                        tools:visibility="visible"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@id/messageTime"
-                        android:id="@+id/messageCount"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="4dp"
 
-                        android:textColor="@color/textColorWhite"
-                        android:layout_height="wrap_content"/>
+                <com.cometchat.pro.uikit.ui_components.shared.cometchatBadgeCount.CometChatBadgeCount
+                    android:id="@+id/messageCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/messageTime"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/borderVerification"
+                    tools:visibility="visible" />
 
             </RelativeLayout>
 

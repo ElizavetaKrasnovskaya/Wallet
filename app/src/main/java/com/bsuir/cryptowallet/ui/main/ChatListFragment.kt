@@ -1,7 +1,6 @@
-package com.cometchat.pro.uikit.ui_components.chats
+package com.bsuir.cryptowallet.ui.main
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.Editable
@@ -18,16 +17,12 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.bsuir.cryptowallet.R
+import com.bsuir.cryptowallet.common.base.BaseFragment
 import com.cometchat.pro.constants.CometChatConstants
 import com.cometchat.pro.core.CometChat
-import com.cometchat.pro.core.CometChat.CallbackListener
-import com.cometchat.pro.core.CometChat.GroupListener
-import com.cometchat.pro.core.CometChat.deleteConversation
 import com.cometchat.pro.core.ConversationsRequest
-import com.cometchat.pro.core.ConversationsRequest.ConversationsRequestBuilder
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.helpers.CometChatHelper
 import com.cometchat.pro.models.Action
@@ -40,10 +35,7 @@ import com.cometchat.pro.models.MediaMessage
 import com.cometchat.pro.models.MessageReceipt
 import com.cometchat.pro.models.TextMessage
 import com.cometchat.pro.models.User
-import com.cometchat.pro.uikit.R
-import com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageListActivity
 import com.cometchat.pro.uikit.ui_components.shared.cometchatConversations.CometChatConversation
-import com.cometchat.pro.uikit.ui_resources.constants.UIKitConstants
 import com.cometchat.pro.uikit.ui_resources.utils.ErrorMessagesUtils
 import com.cometchat.pro.uikit.ui_resources.utils.FontUtils
 import com.cometchat.pro.uikit.ui_resources.utils.Utils
@@ -54,17 +46,7 @@ import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import com.cometchat.pro.uikit.ui_settings.enum.ConversationMode
 import com.facebook.shimmer.ShimmerFrameLayout
 
-/*
-
-* Purpose - CometChatConversationList class is a fragment used to display list of conversations and perform certain action on click of item.
-            It also provide search bar to perform search operation on the list of conversations.User can search by username, groupname, last message of conversation.
-
-* Created on - 20th December 2019
-
-* Modified on  - 23rd March 2020
-
-*/
-class CometChatConversationList : Fragment(), TextWatcher {
+class ChatListFragment : BaseFragment(R.layout.fragment_chat_list), TextWatcher {
     private var rvConversation //Uses to display list of conversations.
             : CometChatConversation? = null
     private var conversationsRequest //Uses to fetch Conversations.
@@ -87,7 +69,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        vw = inflater.inflate(R.layout.fragment_conversation_screen, container, false)
+        vw = inflater.inflate(R.layout.fragment_chat_list, container, false)
         rvConversation = vw?.findViewById(R.id.rv_conversation_list)
         noConversationView = vw?.findViewById(R.id.no_conversation_view)
         searchEdit = vw?.findViewById(R.id.search_bar)
@@ -103,10 +85,9 @@ class CometChatConversationList : Fragment(), TextWatcher {
         }
         checkDarkMode()
         ivStartConversation?.setOnClickListener {
-            var intent = Intent(context, CometChatStartConversation::class.java)
-            startActivity(intent)
+
         }
-        searchEdit?.setOnEditorActionListener(OnEditorActionListener { textView: TextView, i: Int, keyEvent: KeyEvent? ->
+        searchEdit?.setOnEditorActionListener(TextView.OnEditorActionListener { textView: TextView, i: Int, keyEvent: KeyEvent? ->
             if (i == EditorInfo.IME_ACTION_SEARCH) {
                 rvConversation?.searchConversation(textView.text.toString())
                 clearSearch?.visibility = View.VISIBLE
@@ -138,65 +119,8 @@ class CometChatConversationList : Fragment(), TextWatcher {
 
             override fun OnItemClick(t: Any, position: Int) {
                 conversation = t as Conversation
-
-                print(conversation)
                 if (events != null)
-                    events!!.OnItemClick(t, position)
-
-                val intent = Intent(context, CometChatMessageListActivity::class.java)
-                intent.putExtra(UIKitConstants.IntentStrings.TYPE, t.conversationType)
-                if (t.conversationType == CometChatConstants.CONVERSATION_TYPE_GROUP) {
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.NAME,
-                        (t.conversationWith as Group).name
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.GUID,
-                        (t.conversationWith as Group).guid
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.GROUP_OWNER,
-                        (t.conversationWith as Group).owner
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.AVATAR,
-                        (t.conversationWith as Group).icon
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.GROUP_TYPE,
-                        (t.conversationWith as Group).groupType
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.MEMBER_COUNT,
-                        (t.conversationWith as Group).membersCount
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.GROUP_DESC,
-                        (t.conversationWith as Group).description
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.GROUP_PASSWORD,
-                        (t.conversationWith as Group).password
-                    )
-                } else {
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.NAME,
-                        (t.conversationWith as User).name
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.UID,
-                        (t.conversationWith as User).uid
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.AVATAR,
-                        (t.conversationWith as User).avatar
-                    )
-                    intent.putExtra(
-                        UIKitConstants.IntentStrings.STATUS,
-                        (t.conversationWith as User).status
-                    )
-                }
-                startActivity(intent)
+                    events.OnItemClick(t as Conversation, position)
             }
         })
 
@@ -215,7 +139,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
                             underlayButtons?.add(UnderlayButton(
                                 "",
                                 deleteBitmap,
-                                resources.getColor(R.color.red),
+                                resources.getColor(com.cometchat.pro.uikit.R.color.red),
                                 object : UnderlayButtonClickListener {
                                     override fun onClick(pos: Int) {
                                         val conversation: Conversation? =
@@ -257,10 +181,10 @@ class CometChatConversationList : Fragment(), TextWatcher {
         var entity = AppEntity()
         if (conversation.conversationType == CometChatConstants.CONVERSATION_TYPE_USER) {
             entity = conversation.conversationWith as User
-            deleteConversation(
+            CometChat.deleteConversation(
                 entity.uid,
                 conversation.conversationType,
-                object : CallbackListener<String>() {
+                object : CometChat.CallbackListener<String>() {
                     override fun onSuccess(p0: String?) {
                         conversationList.remove(conversation)
                         rvConversation?.remove(conversation)
@@ -273,10 +197,10 @@ class CometChatConversationList : Fragment(), TextWatcher {
                 })
         } else {
             entity = conversation.conversationWith as Group
-            deleteConversation(
+            CometChat.deleteConversation(
                 entity.guid,
                 conversation.conversationType,
-                object : CallbackListener<String>() {
+                object : CometChat.CallbackListener<String>() {
                     override fun onSuccess(p0: String?) {
                         conversationList.remove(conversation)
                         rvConversation?.remove(conversation)
@@ -291,7 +215,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
     }
 
     private fun checkDarkMode() {
-        tvTitle?.setTextColor(resources.getColor(R.color.textColorWhite))
+        tvTitle?.setTextColor(resources.getColor(R.color.white))
     }
 
     /**
@@ -302,12 +226,12 @@ class CometChatConversationList : Fragment(), TextWatcher {
      */
     private fun makeConversationList() {
         if (conversationsRequest == null) {
-            conversationsRequest =
-                ConversationsRequestBuilder().setConversationType(UIKitSettings.conversationInMode.toString())
-                    .setLimit(50).build()
+            conversationsRequest = ConversationsRequest.ConversationsRequestBuilder()
+                .setConversationType(UIKitSettings.conversationInMode.toString()).setLimit(50)
+                .build()
 
         }
-        conversationsRequest?.fetchNext(object : CallbackListener<List<Conversation>>() {
+        conversationsRequest?.fetchNext(object : CometChat.CallbackListener<List<Conversation>>() {
             override fun onSuccess(conversations: List<Conversation>) {
                 if (conversations.isNotEmpty()) {
                     stopHideShimmer()
@@ -393,7 +317,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
                 if (rvConversation != null) rvConversation?.refreshConversation(message)
             }
         })
-        CometChat.addGroupListener(TAG, object : GroupListener() {
+        CometChat.addGroupListener(TAG, object : CometChat.GroupListener() {
             override fun onGroupMemberKicked(
                 action: Action,
                 kickedUser: User,
@@ -517,7 +441,7 @@ class CometChatConversationList : Fragment(), TextWatcher {
     }
 
     companion object {
-        private var events: OnItemClickListener<Any>? = null
+        private lateinit var events: OnItemClickListener<Any>
         private const val TAG = "ConversationList"
 
         /**

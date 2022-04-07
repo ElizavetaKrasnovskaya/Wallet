@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_purple"
     tools:context=".ui_components.chats.CometChatStartConversation">
     
     <com.google.android.material.appbar.MaterialToolbar
@@ -22,7 +23,7 @@
         app:tabGravity="fill"
         app:tabIndicatorGravity="bottom"
         app:tabIndicatorFullWidth="false"
-        app:tabTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/textColorWhite"
         app:tabSelectedTextColor="@color/textColorWhite"
         app:tabMode="fixed"
         android:layout_below="@id/start_chat_toolbar">

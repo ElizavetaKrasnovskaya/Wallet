@@ -30,4 +30,8 @@
     <color name="orange_200">#FFA500</color>
     <color name="green">#43FA36</color>
     <color name="optionsColor">#808080</color>
+
+    <color name="dark_purple">#1D1046</color>
+    <color name="borderVerification">#46407E</color>
+    <color name="orange">#F98D32</color>
 </resources>

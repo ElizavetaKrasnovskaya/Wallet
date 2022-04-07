@@ -14,7 +14,8 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
-            navigate(SplashFragmentDirections.actionSplashFragmentToAboutAppFragment())
+            //navigate(SplashFragmentDirections.actionSplashFragmentToAboutAppFragment())
+            navigate(SplashFragmentDirections.actionSplashFragmentToContactsFragment())
         }, 3000)
     }
 }

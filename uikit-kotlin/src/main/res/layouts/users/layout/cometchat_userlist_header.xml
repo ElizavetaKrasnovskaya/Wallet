@@ -15,6 +15,7 @@
         android:textAllCaps="true"
         android:ellipsize="end"
         android:textStyle="bold"
+        android:textColor="#FFFFFF"
         tools:text="W"
         android:id="@+id/text_char"/>
 

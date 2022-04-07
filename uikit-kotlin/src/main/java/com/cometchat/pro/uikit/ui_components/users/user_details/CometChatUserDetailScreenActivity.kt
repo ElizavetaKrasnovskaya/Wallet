@@ -73,6 +73,7 @@ class CometChatUserDetailScreenActivity constructor() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cometchat_user_detail)
+        supportActionBar?.hide()
         fontUtils = FontUtils.getInstance(this)
         initComponent()
     }
@@ -93,7 +94,7 @@ class CometChatUserDetailScreenActivity constructor() : AppCompatActivity() {
         divider1 = findViewById(R.id.divider_1)
         divider2 = findViewById(R.id.divider_2)
         divider3 = findViewById(R.id.divider_3)
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
         if (supportActionBar != null) supportActionBar?.setDisplayHomeAsUpEnabled(true)
         addBtn!!.typeface = fontUtils!!.getTypeFace(FontUtils.robotoRegular)
         blockUserLayout = findViewById(R.id.block_user_layout)

@@ -116,7 +116,8 @@ class CometChatUsers : RecyclerView {
         addOnItemTouchListener(RecyclerTouchListener(context, this, object : ClickListener() {
             override fun onClick(var1: View, var2: Int) {
                 val user = var1.getTag(R.string.user) as User
-                if (onItemClickListener != null) onItemClickListener.OnItemClick(user, var2) else throw NullPointerException("OnItemClickListener<User> is null")
+                if (onItemClickListener != null) onItemClickListener.OnItemClick(user, var2)
+                else throw NullPointerException("OnItemClickListener<User> is null")
             }
 
             override fun onLongClick(var1: View, var2: Int) {

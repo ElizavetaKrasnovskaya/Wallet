@@ -28,7 +28,7 @@ open class UIKitSettings(context: Context) {
 
 
         //style
-        var color = "#03A9F4"
+        var color = "#1D1046"
 
         //BottomBarcalls
         var showUsersBB = true

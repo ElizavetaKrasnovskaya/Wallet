@@ -17,6 +17,13 @@
             app:popEnterAnim="@anim/wait_anim"
             app:popExitAnim="@anim/slide_right"
             app:destination="@id/aboutAppFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_contactsFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
+            app:destination="@id/contactsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
@@ -45,6 +52,10 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_walletInfoFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/walletInfoFragment" />
     </fragment>
     <fragment
@@ -54,13 +65,25 @@
         tools:layout="@layout/fragment_registration" >
         <action
             android:id="@+id/action_registrationFragment_to_walletInfoFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/walletInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/creatingMnemonicFragment"
         android:name="com.bsuir.cryptowallet.ui.auth.wallet.CreatingMnemonicFragment"
         android:label="fragment_creating_mnemonic"
-        tools:layout="@layout/fragment_creating_mnemonic" />
+        tools:layout="@layout/fragment_creating_mnemonic" >
+        <action
+            android:id="@+id/action_creatingMnemonicFragment_to_contactsFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
+            app:destination="@id/contactsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/walletInfoFragment"
         android:name="com.bsuir.cryptowallet.ui.auth.wallet.WalletInfoFragment"
@@ -68,14 +91,55 @@
         tools:layout="@layout/fragment_wallet_info" >
         <action
             android:id="@+id/action_walletInfoFragment_to_importingMnemonicFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/importingMnemonicFragment" />
         <action
             android:id="@+id/action_walletInfoFragment_to_creatingMnemonicFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/creatingMnemonicFragment" />
     </fragment>
     <fragment
         android:id="@+id/importingMnemonicFragment"
         android:name="com.bsuir.cryptowallet.ui.auth.wallet.ImportingMnemonicFragment"
         android:label="fragment_importing_mnemonic"
-        tools:layout="@layout/fragment_importing_mnemonic" />
+        tools:layout="@layout/fragment_importing_mnemonic" >
+        <action
+            android:id="@+id/action_importingMnemonicFragment_to_contactsFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
+            app:destination="@id/contactsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.cometchat.pro.uikit.ui_components.users.user_list.CometChatUserList"
+        android:label="CometChatUserList" >
+        <action
+            android:id="@+id/action_contactsFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.bsuir.cryptowallet.ui.main.UserSettingsFragment"
+        android:label="fragment_user_settings"
+        tools:layout="@layout/fragment_user_settings" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageList"
+        android:label="CometChatMessageList" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.cometchat.pro.uikit.ui_components.chats.CometChatConversationList"
+        android:label="CometChatConversationList" >
+        <action
+            android:id="@+id/action_chatFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+    </fragment>
 </navigation>

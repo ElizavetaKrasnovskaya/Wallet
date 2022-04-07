@@ -6,8 +6,7 @@
     android:background="@color/dark_purple"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    tools:context=".ui_components.chats.CometChatConversationList">
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -39,7 +38,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_margin="16dp"
                 android:src="@drawable/ic_create"
-                android:tint="@color/orange" />
+                app:tint="@color/orange" />
 
         </RelativeLayout>
 
@@ -115,6 +114,4 @@
     </LinearLayout>
 
     <include layout="@layout/conversation_shimmer" />
-
-
 </RelativeLayout>
