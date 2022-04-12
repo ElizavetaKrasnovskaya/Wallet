@@ -14,8 +14,6 @@ import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.databinding.CometchatUserListItemBinding
 import com.cometchat.pro.uikit.ui_components.groups.group_members.GroupMemberAdapter.GroupMemberViewHolder
 import com.cometchat.pro.uikit.ui_resources.utils.FontUtils
-import com.cometchat.pro.uikit.ui_resources.utils.Utils
-import java.util.*
 
 /**
  * Purpose - GroupMemberAdapter is a subclass of RecyclerView Adapter which is used to display
@@ -40,7 +38,11 @@ class GroupMemberAdapter : RecyclerView.Adapter<GroupMemberViewHolder> {
      * @param context is a object of Context.
      * @param groupMemberList is a list of group member used in this adapter.
      */
-    constructor(context: Context, groupMemberList: List<GroupMember>?, groupOwnerId: String?):super(){
+    constructor(
+        context: Context,
+        groupMemberList: List<GroupMember>?,
+        groupOwnerId: String?
+    ) : super() {
         this.groupMemberList = groupMemberList!! as MutableList<GroupMember>
         this.groupOwnerId = groupOwnerId
         this.context = context
@@ -62,7 +64,12 @@ class GroupMemberAdapter : RecyclerView.Adapter<GroupMemberViewHolder> {
 
     override fun onCreateViewHolder(parent: ViewGroup, i: Int): GroupMemberViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val userListRowBinding: CometchatUserListItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.cometchat_user_list_item, parent, false)
+        val userListRowBinding: CometchatUserListItemBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.cometchat_user_list_item,
+            parent,
+            false
+        )
         return GroupMemberViewHolder(userListRowBinding)
     }
 
@@ -76,7 +83,11 @@ class GroupMemberAdapter : RecyclerView.Adapter<GroupMemberViewHolder> {
      */
     override fun onBindViewHolder(groupMemberViewHolder: GroupMemberViewHolder, i: Int) {
         val groupMember = groupMemberList[i]
-        groupMemberViewHolder.userListRowBinding.avUser.setBackgroundColor(context.resources.getColor(R.color.colorPrimary))
+        groupMemberViewHolder.userListRowBinding.avUser.setBackgroundColor(
+            context.resources.getColor(
+                R.color.orange
+            )
+        )
         groupMemberViewHolder.userListRowBinding.root.setTag(R.string.user, groupMember)
         if (groupMember.uid == CometChat.getLoggedInUser().uid) {
             groupMemberViewHolder.userListRowBinding.txtUserName.setText(R.string.you)
@@ -90,24 +101,34 @@ class GroupMemberAdapter : RecyclerView.Adapter<GroupMemberViewHolder> {
         } else {
             groupMemberViewHolder.userListRowBinding.txtUserScope.text = ""
         }
-        groupMemberViewHolder.userListRowBinding.txtUserName.typeface = fontUtils.getTypeFace(FontUtils.robotoMedium)
-        if (groupMember.avatar == null || groupMember.avatar.isEmpty()) groupMemberViewHolder.userListRowBinding.avUser.setInitials(groupMember.name) else groupMemberViewHolder.userListRowBinding.avUser.setAvatar(groupMember.avatar)
+        groupMemberViewHolder.userListRowBinding.txtUserName.typeface =
+            fontUtils.getTypeFace(FontUtils.robotoMedium)
+        if (groupMember.avatar == null || groupMember.avatar.isEmpty()) groupMemberViewHolder.userListRowBinding.avUser.setInitials(
+            groupMember.name
+        ) else groupMemberViewHolder.userListRowBinding.avUser.setAvatar(groupMember.avatar)
         if (groupMember.status.equals(CometChatConstants.USER_STATUS_ONLINE, ignoreCase = true))
             groupMemberViewHolder.userListRowBinding.statusIndicator.visibility = View.VISIBLE
         else groupMemberViewHolder.userListRowBinding.statusIndicator.visibility = View.GONE
 
         groupMemberViewHolder.userListRowBinding.statusIndicator.setUserStatus(groupMember.status)
 
-        if (Utils.isDarkMode(context)) {
-            groupMemberViewHolder.userListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.textColorWhite))
-            groupMemberViewHolder.userListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.grey))
-            groupMemberViewHolder.userListRowBinding.txtUserScope.setTextColor(context.resources.getColor(R.color.textColorWhite))
-        } else {
-            groupMemberViewHolder.userListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.primaryTextColor))
-            groupMemberViewHolder.userListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.light_grey))
-            groupMemberViewHolder.userListRowBinding.txtUserScope.setTextColor(context.resources.getColor(R.color.secondaryTextColor))
-        }
-        if (i == itemCount - 1) groupMemberViewHolder.userListRowBinding.tvSeprator.visibility = View.GONE
+        groupMemberViewHolder.userListRowBinding.txtUserName.setTextColor(
+            context.resources.getColor(
+                R.color.textColorWhite
+            )
+        )
+        groupMemberViewHolder.userListRowBinding.tvSeprator.setBackgroundColor(
+            context.resources.getColor(
+                R.color.grey
+            )
+        )
+        groupMemberViewHolder.userListRowBinding.txtUserScope.setTextColor(
+            context.resources.getColor(
+                R.color.textColorWhite
+            )
+        )
+        if (i == itemCount - 1) groupMemberViewHolder.userListRowBinding.tvSeprator.visibility =
+            View.GONE
     }
 
     override fun getItemCount(): Int {
@@ -184,7 +205,8 @@ class GroupMemberAdapter : RecyclerView.Adapter<GroupMemberViewHolder> {
         notifyDataSetChanged()
     }
 
-    inner class GroupMemberViewHolder(var userListRowBinding: CometchatUserListItemBinding) : RecyclerView.ViewHolder(userListRowBinding.root)
+    inner class GroupMemberViewHolder(var userListRowBinding: CometchatUserListItemBinding) :
+        RecyclerView.ViewHolder(userListRowBinding.root)
 
     /**
      * This method is used to update group members in a groupMemberList of a adapter.

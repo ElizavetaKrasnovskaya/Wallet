@@ -3,74 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable-v24/ic_settings.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable-v24/ic_sms.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable-v24/shimmer_status.xml" value="0.132" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_delete_white.xml" value="0.1925" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/navigation_item_colors.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/activity_main.xml" value="0.12" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/contact_placeholder.xml" value="0.17223910840932116" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/conversation_shimmer.xml" value="0.184375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/conversation_shimmer_item.xml" value="0.184375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_about_app.xml" value="0.1286231884057971" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_chat.xml" value="0.184375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_chat2.xml" value="0.19375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_contacts.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_contacts2.xml" value="0.128125" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_creating_mnemonic.xml" value="0.1286231884057971" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_importing_mnemonic.xml" value="0.1286231884057971" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_login.xml" value="0.1286231884057971" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_registration.xml" value="0.1286231884057971" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_settings.xml" value="0.2078804347826087" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_user.xml" value="0.19375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_user_settings.xml" value="0.184375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.16666666666666666" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/drawable/count_background.xml" value="0.148" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/drawable/ic_delete_24dp.xml" value="0.1355" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/drawable/search_box.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/drawable/tab_background_state.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/drawable/tab_layout_background.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/drawable/tab_layout_background_active.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layout/activity_start_conversation_from_chat.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/calls/layout/activity_cometchat_callmanager.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/calls/layout/activity_cometchat_start_call.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/calls/layout/fragment_cometchat_calls.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/chats/layout/cometchat_conversation_list_item.xml" value="0.22" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/chats/layout/conversation_shimmer.xml" value="0.184375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/chats/layout/fragment_conversation_screen.xml" value="0.13903985507246377" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/cometchat_ui/layout/activity_cometchat_unified.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/groups/layout/activity_cometchat_ban_members.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_create_group.xml" value="0.19375" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_group_list.xml" value="0.2" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_file_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_image_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_link_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_video_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_forward_message.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_message_info.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_message_list.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_reaction_info.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_webview.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_error_message_view.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/fragment_cometchat_messagelist.xml" value="0.3269927536231884" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/messages_shimmer.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_back.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_search.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/activity_screen.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/cc_dialog.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/map_share_layout.xml" value="0.35885416666666664" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/reaction_list_row.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/rsc_emoji_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/stickers_item.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/view_message_box.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/user_profile/layout/activity_cometchat_more_privacy.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/activity_cometchat_user_detail.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/cometchat_user_list_item.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/cometchat_userlist_header.xml" value="0.17451874366767983" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/fragment_cometchat_userlist.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/user_shimmer.xml" value="0.2617753623188406" />
-        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/user_shimmer_item.xml" value="0.2617753623188406" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/ic_user.xml" value="0.109" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/shape_rounded_light.xml" value="0.109" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/shape_rounded_orange.xml" value="0.109" />
@@ -85,12 +17,166 @@
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/layout/fragment_splash_screen.xml" value="0.12" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/drawable/ic_wallet.xml" value="0.1" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/drawable/shape_bottom_shape.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/activity_main.xml" value="0.15433946130825138" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/conversation_shimmer_item.xml" value="0.15433946130825138" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_about_app.xml" value="0.18292682926829268" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_chat_list.xml" value="0.15433946130825138" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_creating_mnemonic.xml" value="0.2" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_importing_mnemonic.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_login.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_registration.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_splash_screen.xml" value="0.15433946130825138" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_user.xml" value="0.15433946130825138" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_user_settings.xml" value="0.15433946130825138" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/layout/fragment_wallet_info.xml" value="0.2" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/bottom_border.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/cc_message_bubble_left.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/cc_message_bubble_right.xml" value="0.1465" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/cc_progress_drawable.xml" value="0.109" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/cc_rounded_date_button.xml" value="0.1645" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/count_background.xml" value="0.124" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_arrow_back_24dp.xml" value="0.124" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_arrow_right_24dp.xml" value="0.124" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_chat.xml" value="0.1465" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_circle_grey_32dp.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_close_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_insert_drive_file_black_24dp.xml" value="0.112" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_library_music_24dp.xml" value="0.112" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_lightblue_circular_background.xml" value="0.1465" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_nav_chat.xml" value="0.1465" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_notification.xml" value="0.1465" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1465" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_photo.xml" value="0.112" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/ic_play_button.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/left_border.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/left_border_dark.xml" value="0.2885" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/left_border_lmessage.xml" value="0.1" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/left_border_rmessage.xml" value="0.1965" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/tab_background_state.xml" value="0.191" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/tab_layout_background.xml" value="0.13" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/drawable/tab_layout_background_active.xml" value="0.191" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layout/activity_start_conversation_from_chat.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layout/dialog_permission_alert.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/activity_cometchat_callmanager.xml" value="0.33" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/activity_cometchat_start_call.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/cometchat_call_history_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/cometchat_call_list_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/fragment_cometchat_all_call.xml" value="0.4" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/fragment_cometchat_calls.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/calls/layout/fragment_cometchat_missed_call.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/chats/layout/cometchat_conversation_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/chats/layout/conversation_shimmer.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/chats/layout/conversation_shimmer_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/chats/layout/fragment_conversation_screen.xml" value="0.10196406184705391" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/cometchat_ui/layout/activity_cometchat_unified.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/activity_cometchat_ban_members.xml" value="0.155622060709705" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/activity_cometchat_group_detail.xml" value="0.33" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/cometchat_update_group_dialog.xml" value="0.36855036855036855" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_add_member.xml" value="0.23183925811437403" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_admin_moderator_list.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_ban_member.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_create_group.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_group_list.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_action_item.xml" value="0.33" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_audio_item.xml" value="0.25" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_custom_item.xml" value="0.2" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_delete_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_file_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_group_call_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_link_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_list_image_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_list_video_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_location_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_polls_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_reply_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_sticker_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_text_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_whiteboard_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_left_writeboard_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_audio_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_custom_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_delete_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_file_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_group_call_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_link_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_list_image_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_list_video_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_location_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_polls_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_reply_item.xml" value="0.22" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_sticker_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_text_item.xml" value="0.33" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_whiteboard_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_right_writeboard_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_location_message_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_audio_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_file_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_image_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_link_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_message_video_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_forward_message.xml" value="0.22" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_message_info.xml" value="0.10196406184705391" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_message_list.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_reaction_info.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_webview.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_block_user_message_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_composebox_actions.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_edit_message_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_error_message_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_messagedate_header.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_messagelist_toolbar.xml" value="0.27726432532347506" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_receipts_item.xml" value="0.536" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_reply_message_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_threadlist_toolbar.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/fragment_cometchat_message_actions.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/fragment_cometchat_messagelist.xml" value="0.31201382886776147" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/fragment_cometchat_thread_message.xml" value="0.264" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/message_placeholder.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/messages/layout/messages_shimmer.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_add_circle_filled.xml" value="0.112" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_back.xml" value="0.124" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_camera.xml" value="0.112" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_microphone_circle.xml" value="0.112" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/activity_screen.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/cc_dialog.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/cometchat_reaction_window.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/cometchat_sticker_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/create_poll_layout.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/custom_toast.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/divider.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/footer_decor.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/fragment_emoji_objects.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/fragment_stickers_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/group_list_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/image_dialog_view.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/map_share_layout.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/poll_option.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/reaction_info_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/reaction_list_row.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/rsc_emoji_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/stickers_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/others/layout/view_message_box.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_badge_count.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_compose_box.xml" value="0.25" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_shared_media.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_shared_media_file_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_shared_media_image_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_shared_media_video_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_smart_reply.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_smartreply_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/shared/layout/fragment_cometchat_shared_media.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/user_profile/layout/activity_cometchat_more_privacy.xml" value="0.3494809688581315" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/user_profile/layout/fragment_cometchat_user_profile.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/activity_cometchat_user_detail.xml" value="0.23406720741599074" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/cometchat_update_user_dialog.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/cometchat_user_list_item.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/cometchat_userlist_header.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/fragment_cometchat_block_user.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/fragment_cometchat_userlist.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/user_shimmer.xml" value="0.15433946130825138" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/layouts/users/layout/user_shimmer_item.xml" value="0.15433946130825138" />
+        <entry key="..\:/Users/OK/StudioProjects/wallet/uikit-kotlin/src/main/res/menu/cometchat_navigation_bottom.xml" value="0.20863616930312098" />
       </map>
     </option>
   </component>
@@ -99,5 +185,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -2,12 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/dark_purple"
     android:layout_height="match_parent">
     <TextView
         android:drawableStart="@drawable/ic_ban_member"
+        android:drawableTint="@color/orange"
         android:drawablePadding="8dp"
         android:layout_margin="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textColorWhite"
         android:text="@string/no_ban_members"
         android:id="@+id/no_member_tv"
         android:layout_width="match_parent"

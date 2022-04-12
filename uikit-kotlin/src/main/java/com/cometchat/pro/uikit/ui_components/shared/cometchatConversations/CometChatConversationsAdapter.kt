@@ -170,11 +170,9 @@ class CometChatConversationsAdapter(context: Context?) :
                 UIKitSettings.color
             )
         )
-        conversationViewHolder.conversationListRowBinding.messageCount.setCountBackground(
-            Color.parseColor(
-                UIKitSettings.color
-            )
-        )
+//        conversationViewHolder.conversationListRowBinding.messageCount.setCountBackground(
+//            context.resources.getDrawable(R.drawable.count_background)
+//        )
 //        }
         if (avatar != null && avatar.isNotEmpty()) {
             conversationViewHolder.conversationListRowBinding.avUser.setAvatar(avatar)

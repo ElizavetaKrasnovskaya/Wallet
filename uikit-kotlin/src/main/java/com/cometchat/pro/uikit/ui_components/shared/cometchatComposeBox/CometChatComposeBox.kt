@@ -1,16 +1,21 @@
 package com.cometchat.pro.uikit.ui_components.shared.cometchatComposeBox
 
 import android.Manifest
-import android.Manifest.permission
 import android.Manifest.permission.*
+import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.net.Uri
 import android.os.*
+import android.os.Build.VERSION.SDK_INT
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -18,8 +23,11 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.core.content.ContextCompat
 import androidx.core.view.inputmethod.InputContentInfoCompat
 import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.ui_components.shared.cometchatComposeBox.CometChatComposeBoxActions.ComposeBoxActionListener
@@ -33,26 +41,6 @@ import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import java.io.File
 import java.io.IOException
 import java.util.*
-import android.annotation.TargetApi
-
-import androidx.core.app.ActivityCompat
-
-import androidx.core.app.ActivityCompat.startActivityForResult
-
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-
-import android.os.Build
-import android.os.Build.VERSION
-
-import android.os.Build.VERSION.SDK_INT
-import android.provider.Settings
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.content.ContextCompat
-import com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageListActivity
-import org.webrtc.ContextUtils.getApplicationContext
 
 
 class CometChatComposeBox : RelativeLayout, View.OnClickListener {
@@ -99,7 +87,8 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
     var isStickerVisible = true
     var isWhiteBoardVisible = true
     var isWriteBoardVisible = true
-//    var isStartVideoCall = true
+
+    //    var isStartVideoCall = true
     var isPollVisible = true
 
     constructor(context: Context) : super(context) {
@@ -110,15 +99,25 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
         initViewComponent(context, attrs, -1, -1)
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         initViewComponent(context, attrs, defStyleAttr, -1)
     }
 
-    private fun initViewComponent(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) {
+    private fun initViewComponent(
+        context: Context,
+        attributeSet: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) {
         var view = View.inflate(context, R.layout.cometchat_compose_box, null)
 
-        var a = getContext().theme.obtainStyledAttributes(attributeSet, R.styleable.ComposeBox, 0, 0)
-        color = a.getColor(R.styleable.ComposeBox_color, resources.getColor(R.color.colorPrimary))
+        var a =
+            getContext().theme.obtainStyledAttributes(attributeSet, R.styleable.ComposeBox, 0, 0)
+        color = a.getColor(R.styleable.ComposeBox_color, resources.getColor(R.color.orange))
         addView(view)
 
         this.c = context
@@ -135,9 +134,10 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
             }, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
         }
         btnLiveReaction = findViewById(R.id.btn_live_reaction)
-        FeatureRestriction.isLiveReactionsEnabled(object : FeatureRestriction.OnSuccessListener{
+        FeatureRestriction.isLiveReactionsEnabled(object : FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
-                if (p0) btnLiveReaction?.visibility = View.VISIBLE else btnLiveReaction?.visibility = View.GONE
+                if (p0) btnLiveReaction?.visibility =
+                    View.VISIBLE else btnLiveReaction?.visibility = View.GONE
             }
         })
         composeBox = findViewById(R.id.message_box)
@@ -253,29 +253,19 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 composeActionListener.onEditTextMediaSelected(i)
             }
         })
-        if (Utils.isDarkMode(context)) {
-            composeBox!!.setBackgroundColor(resources.getColor(R.color.darkModeBackground))
-            ivAudio!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
+        composeBox!!.setBackgroundColor(resources.getColor(R.color.darkModeBackground))
+        ivAudio!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
 //            ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_mic_white_24dp))
-            flBox!!.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
-            etComposeBox!!.setTextColor(resources.getColor(R.color.textColorWhite))
+        flBox!!.backgroundTintList =
+            ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
+        etComposeBox!!.setTextColor(resources.getColor(R.color.textColorWhite))
 //            ivArrow!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
 //            ivSend!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
-            ivCamera!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
-            ivGallery!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
-            ivFile!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
-        } else {
-            composeBox!!.setBackgroundColor(resources.getColor(R.color.textColorWhite))
-            ivAudio!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-//            ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_mic_grey_24dp))
-            etComposeBox!!.setTextColor(resources.getColor(R.color.primaryTextColor))
-//            ivSend!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            flBox!!.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.grey))
-//            ivArrow!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.grey))
-            ivCamera!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            ivFile!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            ivFile!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-        }
+        ivCamera!!.imageTintList =
+            ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
+        ivGallery!!.imageTintList =
+            ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
+        ivFile!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
         if (UIKitSettings.color != null) {
             val settingsColor = Color.parseColor(UIKitSettings.color)
 //            ivSend!!.imageTintList = ColorStateList.valueOf(settingsColor)
@@ -283,14 +273,16 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
 
         isLocationVisible = FeatureRestriction.isLocationSharingEnabled()
 
-        FeatureRestriction.isCollaborativeWhiteBoardEnabled(object : FeatureRestriction.OnSuccessListener {
+        FeatureRestriction.isCollaborativeWhiteBoardEnabled(object :
+            FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
-                Log.e("CometChatComposeBox", "onSuccess: "+p0.toString() )
+                Log.e("CometChatComposeBox", "onSuccess: " + p0.toString())
                 isWhiteBoardVisible = p0
                 bundle.putBoolean("isWhiteBoardVisible", isWhiteBoardVisible)
             }
         })
-        FeatureRestriction.isCollaborativeDocumentEnabled(object : FeatureRestriction.OnSuccessListener{
+        FeatureRestriction.isCollaborativeDocumentEnabled(object :
+            FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
                 isWriteBoardVisible = p0
                 bundle.putBoolean("isWriteBoardVisible", isWriteBoardVisible)
@@ -331,7 +323,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 bundle.putBoolean("isCameraVisible", isCameraVisible)
             }
         })
-        FeatureRestriction.isFilesEnabled(object: FeatureRestriction.OnSuccessListener{
+        FeatureRestriction.isFilesEnabled(object : FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
                 isFileVisible = p0
                 isAudioVisible = p0
@@ -342,7 +334,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
         })
 
 
-        if (!isLocationVisible && !isWhiteBoardVisible && !isWriteBoardVisible && !isAudioVisible && !isFileVisible && !isCameraVisible && !isGalleryVisible && !isPollVisible && !isStickerVisible ){
+        if (!isLocationVisible && !isWhiteBoardVisible && !isWriteBoardVisible && !isAudioVisible && !isFileVisible && !isCameraVisible && !isGalleryVisible && !isPollVisible && !isStickerVisible) {
             ivArrow!!.visibility = GONE
         }
         a.recycle()
@@ -367,7 +359,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
         this.composeActionListener.getFileActionView(ivFile!!)
     }
 
-//    @RequiresApi(Build.VERSION_CODES.M)
+    //    @RequiresApi(Build.VERSION_CODES.M)
     override fun onClick(view: View) {
         if (view.id == R.id.ivDelete) {
             stopRecording(true)
@@ -469,25 +461,29 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
 //                rlActionContainer!!.startAnimation(leftAnim)
 //                rlActionContainer!!.visibility = View.GONE
 //            }
-                if (!isRecording) {
-                    startRecord()
-                    ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_stop_24dp))
-                    isRecording = true
-                    isPlaying = false
-                } else {
-                    if (isRecording && !isPlaying) {
-                        isPlaying = true
-                        stopRecording(false)
-                        recordTime!!.stop()
-                    }
-                    voiceSeekbar!!.visibility = View.VISIBLE
-                    voiceMessage = true
-                    ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_pause_24dp))
-                    audioRecordView!!.visibility = View.GONE
-                    ivSend!!.visibility = View.VISIBLE
-                    ivDelete!!.visibility = View.VISIBLE
-                    if (audioFileNameWithPath != null) startPlayingAudio(audioFileNameWithPath!!) else Toast.makeText(context, "No File Found. Please", Toast.LENGTH_LONG).show()
+            if (!isRecording) {
+                startRecord()
+                ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_stop_24dp))
+                isRecording = true
+                isPlaying = false
+            } else {
+                if (isRecording && !isPlaying) {
+                    isPlaying = true
+                    stopRecording(false)
+                    recordTime!!.stop()
                 }
+                voiceSeekbar!!.visibility = View.VISIBLE
+                voiceMessage = true
+                ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_pause_24dp))
+                audioRecordView!!.visibility = View.GONE
+                ivSend!!.visibility = View.VISIBLE
+                ivDelete!!.visibility = View.VISIBLE
+                if (audioFileNameWithPath != null) startPlayingAudio(audioFileNameWithPath!!) else Toast.makeText(
+                    context,
+                    "No File Found. Please",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
 //            } else {
 //
 ////                requestPermission()
@@ -503,20 +499,21 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
     }
 
     @TargetApi(30)
-    private fun checkRecordAudioPermissionAPI30(recordAudioRequestCode: Int) : Boolean{
+    private fun checkRecordAudioPermissionAPI30(recordAudioRequestCode: Int): Boolean {
         if (checkSinglePermission(Manifest.permission.RECORD_AUDIO) &&
-            checkSinglePermission(MANAGE_EXTERNAL_STORAGE)) return true
+            checkSinglePermission(MANAGE_EXTERNAL_STORAGE)
+        ) return true
         else {
 //            AlertDialog.Builder(context)
 //            .setTitle(R.string.background_location_permission_title)
 //            .setMessage(R.string.background_location_permission_message)
 //                .setPositiveButton(R.string.yes) { _, _ ->
-                    // this request will take user to Application's Setting page
-                    requestPermissions(
-                        context as Activity,
-                        arrayOf(Manifest.permission.RECORD_AUDIO, MANAGE_EXTERNAL_STORAGE),
-                        recordAudioRequestCode
-                    )
+            // this request will take user to Application's Setting page
+            requestPermissions(
+                context as Activity,
+                arrayOf(Manifest.permission.RECORD_AUDIO, MANAGE_EXTERNAL_STORAGE),
+                recordAudioRequestCode
+            )
 //                }
 //                .setNegativeButton(R.string.no) { dialog, _ ->
 //                    dialog.dismiss()
@@ -526,8 +523,12 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
         }
         return false
     }
-     fun checkSinglePermission(permission: String) : Boolean {
-        return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+
+    fun checkSinglePermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            context,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun requestPermission() {
@@ -542,15 +543,26 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                         context.packageName
                     )
                 )
-                startActivityForResult(context as Activity, intent, UIKitConstants.RequestCode.RECORD, null)
+                startActivityForResult(
+                    context as Activity,
+                    intent,
+                    UIKitConstants.RequestCode.RECORD,
+                    null
+                )
             } catch (e: java.lang.Exception) {
                 val intent = Intent()
                 intent.action = Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
-                startActivityForResult(context as Activity, intent, UIKitConstants.RequestCode.RECORD, null)
+                startActivityForResult(
+                    context as Activity,
+                    intent,
+                    UIKitConstants.RequestCode.RECORD,
+                    null
+                )
             }
         } else {
             //below android 11
-            ActivityCompat.requestPermissions(context as Activity, arrayOf(RECORD_AUDIO, WRITE_EXTERNAL_STORAGE),
+            ActivityCompat.requestPermissions(
+                context as Activity, arrayOf(RECORD_AUDIO, WRITE_EXTERNAL_STORAGE),
                 UIKitConstants.RequestCode.RECORD
             )
         }
@@ -574,7 +586,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
     }
 
 
-//    @RequiresApi(Build.VERSION_CODES.M)
+    //    @RequiresApi(Build.VERSION_CODES.M)
     private fun startPlayingAudio(path: String) {
         try {
             if (timerRunnable != null) {
@@ -582,13 +594,22 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 timerRunnable = null
             }
             mediaPlayer?.reset()
-            if (Utils.hasPermissions(context, *arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
+            if (Utils.hasPermissions(
+                    context,
+                    *arrayOf(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                )
+            ) {
                 mediaPlayer?.setDataSource(path)
                 mediaPlayer?.prepare()
                 mediaPlayer?.start()
             } else {
-               requestPermissions(context as Activity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                        UIKitConstants.RequestCode.READ_STORAGE)
+                requestPermissions(
+                    context as Activity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    UIKitConstants.RequestCode.READ_STORAGE
+                )
             }
             val duration = mediaPlayer?.duration
             voiceSeekbar?.max = duration!!
@@ -648,7 +669,8 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 override fun run() {
                     var currentMaxAmp = 0
                     try {
-                        currentMaxAmp = if (mediaRecorder != null) mediaRecorder!!.maxAmplitude else 0
+                        currentMaxAmp =
+                            if (mediaRecorder != null) mediaRecorder!!.maxAmplitude else 0
                         audioRecordView!!.update(currentMaxAmp)
                         if (mediaRecorder == null) timer = null
                     } catch (e: Exception) {

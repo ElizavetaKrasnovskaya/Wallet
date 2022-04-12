@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_CryptoWallet)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -59,9 +60,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.registrationFragment, R.id.creatingMnemonicFragment,
                 R.id.importingMnemonicFragment, R.id.walletInfoFragment -> {
                     binding.bottomNavGraph.visibility = View.GONE
+                    binding.line.visibility = View.GONE
                 }
                 else -> {
                     binding.bottomNavGraph.visibility = View.VISIBLE
+                    binding.line.visibility = View.VISIBLE
                 }
             }
         }

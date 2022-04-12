@@ -13,7 +13,7 @@
     <RelativeLayout
         android:clickable="true"
         android:layout_width="match_parent"
-        android:background="?attr/selectableItemBackground"
+        android:background="@color/dark_purple"
         android:layout_height="72dp">
 
         <com.cometchat.pro.uikit.ui_components.shared.cometchatAvatar.CometChatAvatar
@@ -47,7 +47,7 @@
                 tools:text="@tools:sample/full_names"
                 android:layout_marginEnd="16dp"
                 android:textSize="@dimen/name"
-                android:textColor="@color/primaryTextColor"
+                android:textColor="@color/textColorWhite"
                 android:layout_toEndOf="@id/av_group"
                 android:layout_alignTop="@id/av_group"
                 android:text="@{group.name}"
@@ -63,22 +63,20 @@
                 android:layout_toEndOf="@id/av_group"
                 android:textSize="@dimen/fourteen"
                 android:text="@{group.groupType}"
+                android:textColor="@color/textColorWhite"
                 android:maxLines="1"
                 tools:text="Public"
                 android:visibility="visible" />
-
 
         <TextView
             android:id="@+id/tvSeprator"
             android:layout_width="match_parent"
             android:layout_toEndOf="@id/av_group"
             android:layout_alignParentBottom="true"
-            android:background="@color/light_grey"
+            android:background="@color/borderVerification"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_height="1dp"/>
-
-
 
         <TextView
             android:id="@+id/tvTimeStamp"
@@ -88,6 +86,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:gravity="center"
+            android:textColor="@color/textColorWhite"
             tools:text="9:45"
             android:layout_width="40dp"
             android:layout_height="wrap_content"/>

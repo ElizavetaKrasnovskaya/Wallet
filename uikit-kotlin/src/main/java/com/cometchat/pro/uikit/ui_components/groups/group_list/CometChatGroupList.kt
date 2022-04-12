@@ -14,7 +14,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -27,19 +30,17 @@ import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.Group
 import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.ui_components.groups.create_group.CometChatCreateGroupActivity
+import com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageListActivity
 import com.cometchat.pro.uikit.ui_components.shared.cometchatGroups.CometChatGroups
 import com.cometchat.pro.uikit.ui_components.shared.cometchatGroups.CometChatGroupsAdapter
-import com.cometchat.pro.uikit.ui_components.users.user_list.CometChatUserList
 import com.cometchat.pro.uikit.ui_resources.constants.UIKitConstants
 import com.cometchat.pro.uikit.ui_resources.utils.ErrorMessagesUtils
 import com.cometchat.pro.uikit.ui_resources.utils.FontUtils
-import com.cometchat.pro.uikit.ui_resources.utils.Utils
 import com.cometchat.pro.uikit.ui_resources.utils.item_clickListener.OnItemClickListener
 import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import com.cometchat.pro.uikit.ui_settings.enum.GroupMode
 import com.facebook.shimmer.ShimmerFrameLayout
-import java.util.*
 
 /*
 
@@ -67,8 +68,10 @@ class CometChatGroupList constructor() : Fragment() {
     private val groupList: MutableList<Group> = ArrayList()
     private var conversationShimmer: ShimmerFrameLayout? = null
     private var tvTitle: TextView? = null
-    public override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                     savedInstanceState: Bundle?): View? {
+    public override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_cometchat_group_list, container, false)
 
@@ -82,11 +85,11 @@ class CometChatGroupList constructor() : Fragment() {
 
         val fragment = fragmentManager?.findFragmentByTag("startChat")
         if (fragment != null && fragment.isVisible) {
-            Log.e(TAG, "onCreateView: group "+ fragment.toString())
+            Log.e(TAG, "onCreateView: group " + fragment.toString())
             tvTitle?.visibility = View.GONE
         }
 
-        FeatureRestriction.isGroupSearchEnabled(object : FeatureRestriction.OnSuccessListener{
+        FeatureRestriction.isGroupSearchEnabled(object : FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
                 if (!p0) {
                     etSearch?.visibility = View.GONE
@@ -96,19 +99,30 @@ class CometChatGroupList constructor() : Fragment() {
         })
         ivCreateGroup = view.findViewById(R.id.create_group)
         ivCreateGroup?.imageTintList = ColorStateList.valueOf(Color.parseColor(UIKitSettings.color))
-        if (FeatureRestriction.isGroupCreationEnabled()) ivCreateGroup?.visibility = View.VISIBLE else ivCreateGroup?.visibility = View.GONE
-        if (Utils.isDarkMode(context!!)) {
-            tvTitle?.setTextColor(resources.getColor(R.color.textColorWhite))
-        } else {
-            tvTitle?.setTextColor(resources.getColor(R.color.primaryTextColor))
-        }
+        if (FeatureRestriction.isGroupCreationEnabled()) ivCreateGroup?.visibility =
+            View.VISIBLE else ivCreateGroup?.visibility = View.GONE
+        tvTitle?.setTextColor(resources.getColor(R.color.textColorWhite))
         ivCreateGroup?.setOnClickListener(View.OnClickListener { view1: View? ->
             val intent: Intent = Intent(context, CometChatCreateGroupActivity::class.java)
             startActivity(intent)
         })
         etSearch?.addTextChangedListener(object : TextWatcher {
-            public override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-            public override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            public override fun beforeTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
+            public override fun onTextChanged(
+                charSequence: CharSequence,
+                i: Int,
+                i1: Int,
+                i2: Int
+            ) {
+            }
+
             public override fun afterTextChanged(editable: Editable) {
                 if (editable.isEmpty()) {
                     // if etSearch is empty then fetch all groups.
@@ -122,7 +136,11 @@ class CometChatGroupList constructor() : Fragment() {
             }
         })
         etSearch?.setOnEditorActionListener(object : OnEditorActionListener {
-            public override fun onEditorAction(textView: TextView, i: Int, keyEvent: KeyEvent?): Boolean {
+            public override fun onEditorAction(
+                textView: TextView,
+                i: Int,
+                keyEvent: KeyEvent?
+            ): Boolean {
                 if (i == EditorInfo.IME_ACTION_SEARCH) {
                     searchGroup(textView.text.toString())
                     clearSearch?.visibility = View.VISIBLE
@@ -135,7 +153,8 @@ class CometChatGroupList constructor() : Fragment() {
             etSearch?.setText("")
             clearSearch?.visibility = View.GONE
             searchGroup(etSearch?.text.toString())
-            val inputMethodManager: InputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val inputMethodManager: InputMethodManager =
+                context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             // Hide the soft keyboard
             inputMethodManager.hideSoftInputFromWindow(etSearch?.windowToken, 0)
         }
@@ -152,14 +171,33 @@ class CometChatGroupList constructor() : Fragment() {
         // Used to trigger event on click of group item in rvGroupList (RecyclerView)
         rvGroups?.setItemClickListener(object : OnItemClickListener<Group?>() {
             public override fun OnItemClick(t: Any, position: Int) {
-                event?.OnItemClick(t as Group, position)
+                val group = t as Group
+                val intent = Intent(context, CometChatMessageListActivity::class.java)
+                intent.putExtra(UIKitConstants.IntentStrings.NAME, group.name)
+                intent.putExtra(UIKitConstants.IntentStrings.GROUP_OWNER, group.owner)
+                intent.putExtra(UIKitConstants.IntentStrings.GUID, group.guid)
+                intent.putExtra(UIKitConstants.IntentStrings.AVATAR, group.icon)
+                intent.putExtra(UIKitConstants.IntentStrings.GROUP_TYPE, group.groupType)
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.TYPE,
+                    CometChatConstants.RECEIVER_TYPE_GROUP
+                )
+                intent.putExtra(UIKitConstants.IntentStrings.MEMBER_COUNT, group.membersCount)
+                intent.putExtra(UIKitConstants.IntentStrings.GROUP_DESC, group.description)
+                intent.putExtra(UIKitConstants.IntentStrings.GROUP_PASSWORD, group.password)
+                startActivity(intent)
             }
         })
         return view
     }
 
-    var itemTouchHelper = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.ACTION_STATE_IDLE, ItemTouchHelper.LEFT) {
-        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+    var itemTouchHelper = object :
+        ItemTouchHelper.SimpleCallback(ItemTouchHelper.ACTION_STATE_IDLE, ItemTouchHelper.LEFT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
             return false
         }
 
@@ -173,6 +211,7 @@ class CometChatGroupList constructor() : Fragment() {
         }
 
     }
+
     public override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (isTitleVisible)
@@ -224,12 +263,14 @@ class CometChatGroupList constructor() : Fragment() {
                 resultList.add(group)
             }
             if (UIKitSettings.groupInMode == GroupMode.PUBLIC_GROUP &&
-                    group.groupType.equals(CometChatConstants.GROUP_TYPE_PUBLIC, ignoreCase = true)) {
+                group.groupType.equals(CometChatConstants.GROUP_TYPE_PUBLIC, ignoreCase = true)
+            ) {
                 resultList.add(group)
             } else if (UIKitSettings.groupInMode == GroupMode.PASSWORD_GROUP &&
-                    group.groupType.equals(CometChatConstants.GROUP_TYPE_PASSWORD, ignoreCase = true)) {
+                group.groupType.equals(CometChatConstants.GROUP_TYPE_PASSWORD, ignoreCase = true)
+            ) {
                 resultList.add(group)
-            }  else if (UIKitSettings.groupInMode == GroupMode.ALL_GROUP) {
+            } else if (UIKitSettings.groupInMode == GroupMode.ALL_GROUP) {
                 resultList.add(group)
             }
         }
@@ -244,7 +285,8 @@ class CometChatGroupList constructor() : Fragment() {
      * @see GroupsRequest
      */
     private fun searchGroup(s: String) {
-        val groupsRequest: GroupsRequest = GroupsRequestBuilder().setSearchKeyWord(s).setLimit(100).build()
+        val groupsRequest: GroupsRequest =
+            GroupsRequestBuilder().setSearchKeyWord(s).setLimit(100).build()
         groupsRequest.fetchNext(object : CallbackListener<List<Group?>?>() {
             public override fun onSuccess(groups: List<Group?>?) {
                 rvGroups?.searchGroupList(groups) // sets the groups in rvGroupList i.e CometChatGroupList Component.

@@ -449,23 +449,14 @@ class CometChatMessageList : Fragment(), View.OnClickListener, OnMessageLongClic
         rvChatListView!!.layoutManager = linearLayoutManager
 //        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 //        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        if (Utils.isDarkMode(requireContext())) {
-            toolbar?.setBackgroundColor(resources.getColor(R.color.grey))
+
+            toolbar?.setBackgroundColor(resources.getColor(R.color.dark_purple))
             editMessageLayout?.background = resources.getDrawable(R.drawable.left_border_dark)
-            composeBox?.setBackgroundColor(resources.getColor(R.color.darkModeBackground))
-            rvChatListView?.setBackgroundColor(resources.getColor(R.color.darkModeBackground))
+            composeBox?.setBackgroundColor(resources.getColor(R.color.orange))
+            rvChatListView?.setBackgroundColor(resources.getColor(R.color.dark_purple))
             replyMessageLayout?.background = resources.getDrawable(R.drawable.left_border_dark)
 //            rlMessageAction?.setBackgroundColor(resources.getColor(R.color.darkModeBackground))
             tvName?.setTextColor(resources.getColor(R.color.textColorWhite))
-        } else {
-            toolbar?.setBackgroundColor(resources.getColor(R.color.textColorWhite))
-            editMessageLayout?.background = resources.getDrawable(R.drawable.left_border)
-            composeBox?.setBackgroundColor(resources.getColor(R.color.textColorWhite))
-            rvChatListView?.setBackgroundColor(resources.getColor(R.color.textColorWhite))
-            replyMessageLayout?.background = resources.getDrawable(R.drawable.left_border)
-//            rlMessageAction!!.setBackgroundColor(resources.getColor(R.color.textColorWhite))
-            tvName?.setTextColor(resources.getColor(R.color.primaryTextColor))
-        }
         KeyBoardUtils.setKeyboardVisibilityListener(requireActivity(), rvChatListView?.parent as View, object : KeyboardVisibilityListener {
             override fun onKeyboardVisibilityChanged(keyboardVisible: Boolean) {
                 if (keyboardVisible) {
@@ -939,12 +930,12 @@ class CometChatMessageList : Fragment(), View.OnClickListener, OnMessageLongClic
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
             when {
                 granted -> {
-                        Toast.makeText(context, "Permission granted!", Toast.LENGTH_SHORT).show()
+                        // Toast.makeText(context, "Permission granted!", Toast.LENGTH_SHORT).show()
                     (context as Activity).startActivityForResult(MediaUtils.openGallery(requireActivity()),
                         UIKitConstants.RequestCode.GALLERY)
                 }
                 else -> {
-                    Toast.makeText(context, "Permission denied!", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Permission denied!", Toast.LENGTH_SHORT).show()
                     requestGalleryPermission()
                 }
             }
@@ -2806,9 +2797,8 @@ class CometChatMessageList : Fragment(), View.OnClickListener, OnMessageLongClic
             override fun onCopyMessageClick() {
                 var message = ""
                 for (bMessage in baseMessages!!) {
-                    if (bMessage.deletedAt == 0L && bMessage is TextMessage) {
-                        message = message + "[" + Utils.getLastMessageDate(bMessage.getSentAt()) + "] " + bMessage.getSender().name + ": " + bMessage.text
-                    }
+                    if (bMessage.deletedAt == 0L && bMessage is TextMessage)
+                        message += bMessage.text
                 }
                 Log.v(TAG, "onCopy: $message")
                 val clipboardManager = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager

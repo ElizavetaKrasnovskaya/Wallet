@@ -196,17 +196,10 @@ class CometChatUserDetailScreenActivity constructor() : AppCompatActivity() {
     }
 
     private fun checkDarkMode() {
-        if (Utils.isDarkMode(this)) {
             userName!!.setTextColor(resources.getColor(R.color.textColorWhite))
             divider1!!.setBackgroundColor(resources.getColor(R.color.grey))
             divider2!!.setBackgroundColor(resources.getColor(R.color.grey))
             divider3!!.setBackgroundColor(resources.getColor(R.color.grey))
-        } else {
-            userName!!.setTextColor(resources.getColor(R.color.primaryTextColor))
-            divider1!!.setBackgroundColor(resources.getColor(R.color.light_grey))
-            divider2!!.setBackgroundColor(resources.getColor(R.color.light_grey))
-            divider3!!.setBackgroundColor(resources.getColor(R.color.light_grey))
-        }
     }
 
 //    private fun checkOnGoingCall(callType: String) {
@@ -259,7 +252,8 @@ class CometChatUserDetailScreenActivity constructor() : AppCompatActivity() {
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.STATUS)) {
             val status: String? = intent.getStringExtra(UIKitConstants.IntentStrings.STATUS)
-            if (status != null && (status == CometChatConstants.USER_STATUS_ONLINE)) userStatus!!.setTextColor(resources.getColor(R.color.colorPrimary))
+            if (status != null && (status == CometChatConstants.USER_STATUS_ONLINE)) userStatus!!.setTextColor(resources.getColor(R.color.online_green))
+            else userStatus!!.setTextColor(resources.getColor(R.color.red))
             userStatus!!.text = status
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.LINK)) {

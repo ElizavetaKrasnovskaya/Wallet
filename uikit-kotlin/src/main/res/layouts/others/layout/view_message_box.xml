@@ -74,6 +74,8 @@
             android:layout_width="match_parent"
             android:id="@+id/etComposeBox"
             android:hint="@string/message"
+            android:textColor="@color/textColorWhite"
+            android:textColorHint="@color/textColorWhite"
             android:paddingStart="16dp"
             android:singleLine="false"
             android:inputType="textMultiLine"

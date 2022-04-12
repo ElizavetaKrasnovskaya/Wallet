@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_purple"
     tools:context=".ui_components.messages.message_information.CometChatMessageInfoScreenActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -23,7 +24,6 @@
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
                 android:elevation="8dp"
-                app:navigationIcon="@drawable/ic_back"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin">
                 <ImageView

@@ -13,8 +13,6 @@ import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.databinding.GroupListItemBinding
 import com.cometchat.pro.uikit.ui_components.shared.cometchatGroups.CometChatGroupsAdapter.GroupViewHolder
 import com.cometchat.pro.uikit.ui_resources.utils.FontUtils
-import com.cometchat.pro.uikit.ui_resources.utils.Utils
-import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import java.util.*
 
@@ -46,7 +44,8 @@ class CometChatGroupsAdapter(context: Context) : RecyclerView.Adapter<GroupViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val groupListRowBinding: GroupListItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.group_list_item, parent, false)
+        val groupListRowBinding: GroupListItemBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.group_list_item, parent, false)
         return GroupViewHolder(groupListRowBinding)
     }
 
@@ -63,28 +62,49 @@ class CometChatGroupsAdapter(context: Context) : RecyclerView.Adapter<GroupViewH
         groupViewHolder.groupListRowBinding.group = group
         groupViewHolder.groupListRowBinding.executePendingBindings()
 
-        groupViewHolder.groupListRowBinding.txtUserMessage.text = context.resources.getString(R.string.members)+": "+group.membersCount
+        groupViewHolder.groupListRowBinding.txtUserMessage.text =
+            context.resources.getString(R.string.members) + ": " + group.membersCount
 
         when (group.groupType) {
-            CometChatConstants.GROUP_TYPE_PRIVATE -> groupViewHolder.groupListRowBinding.txtUserName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_private_group, 0)
-            CometChatConstants.GROUP_TYPE_PASSWORD -> groupViewHolder.groupListRowBinding.txtUserName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_password_protected_group, 0)
-            else -> groupViewHolder.groupListRowBinding.txtUserName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+            CometChatConstants.GROUP_TYPE_PRIVATE -> groupViewHolder.groupListRowBinding.txtUserName.setCompoundDrawablesWithIntrinsicBounds(
+                0,
+                0,
+                R.drawable.ic_private_group,
+                0
+            )
+            CometChatConstants.GROUP_TYPE_PASSWORD -> groupViewHolder.groupListRowBinding.txtUserName.setCompoundDrawablesWithIntrinsicBounds(
+                0,
+                0,
+                R.drawable.ic_password_protected_group,
+                0
+            )
+            else -> groupViewHolder.groupListRowBinding.txtUserName.setCompoundDrawablesWithIntrinsicBounds(
+                0,
+                0,
+                0,
+                0
+            )
         }
 
-        groupViewHolder.groupListRowBinding.avGroup.setBackgroundColor(Color.parseColor(UIKitSettings.color))
+        groupViewHolder.groupListRowBinding.avGroup.setBackgroundColor(
+            Color.parseColor(
+                UIKitSettings.color
+            )
+        )
 //        groupViewHolder.groupListRowBinding.avGroup.setBackgroundColor(context.resources.getColor(R.color.colorPrimary))
         groupViewHolder.groupListRowBinding.root.setTag(R.string.group, group)
-        groupViewHolder.groupListRowBinding.txtUserMessage.typeface = fontUtils.getTypeFace(FontUtils.robotoRegular)
-        groupViewHolder.groupListRowBinding.txtUserName.typeface = fontUtils.getTypeFace(FontUtils.robotoMedium)
-        if (Utils.isDarkMode(context)) {
-            groupViewHolder.groupListRowBinding.txtUserName.compoundDrawableTintList = ColorStateList.valueOf(context.resources.getColor(R.color.grey))
-            groupViewHolder.groupListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.textColorWhite))
-            groupViewHolder.groupListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.grey))
-        } else {
-            groupViewHolder.groupListRowBinding.txtUserName.compoundDrawableTintList = ColorStateList.valueOf(context.resources.getColor(R.color.message_bubble_grey))
-            groupViewHolder.groupListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.primaryTextColor))
-            groupViewHolder.groupListRowBinding.tvSeprator.setBackgroundColor(context.resources.getColor(R.color.light_grey))
-        }
+        groupViewHolder.groupListRowBinding.txtUserMessage.typeface =
+            fontUtils.getTypeFace(FontUtils.robotoRegular)
+        groupViewHolder.groupListRowBinding.txtUserName.typeface =
+            fontUtils.getTypeFace(FontUtils.robotoMedium)
+        groupViewHolder.groupListRowBinding.txtUserName.compoundDrawableTintList =
+            ColorStateList.valueOf(context.resources.getColor(R.color.grey))
+        groupViewHolder.groupListRowBinding.txtUserName.setTextColor(context.resources.getColor(R.color.textColorWhite))
+        groupViewHolder.groupListRowBinding.tvSeprator.setBackgroundColor(
+            context.resources.getColor(
+                R.color.grey
+            )
+        )
     }
 
     /**
@@ -169,5 +189,6 @@ class CometChatGroupsAdapter(context: Context) : RecyclerView.Adapter<GroupViewH
         notifyDataSetChanged()
     }
 
-    inner class GroupViewHolder(var groupListRowBinding: GroupListItemBinding) : RecyclerView.ViewHolder(groupListRowBinding.root)
+    inner class GroupViewHolder(var groupListRowBinding: GroupListItemBinding) :
+        RecyclerView.ViewHolder(groupListRowBinding.root)
 }

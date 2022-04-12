@@ -21,7 +21,6 @@
             android:id="@+id/rl_message">
             <RelativeLayout
                 android:background="@drawable/cc_message_bubble_right"
-                android:backgroundTint="@color/colorPrimary"
                 android:layout_alignParentEnd="true"
                 android:id="@+id/cv_message_container"
                 android:layout_width="250dp"
@@ -59,8 +58,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="6dp"
-                    android:textColor="@color/colorPrimary"
-                    app:backgroundTint="@color/textColorWhite"
+                    android:textColor="@color/textColorWhite"
+                    app:backgroundTint="@color/borderVerification"
                     app:cornerRadius="8dp"
                     android:id="@+id/join_call"
                     android:layout_height="wrap_content"

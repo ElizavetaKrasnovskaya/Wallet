@@ -44,6 +44,7 @@ class CometChatStartCallActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_cometchat_start_call)
         activity = this
         mainView = findViewById(R.id.call_view)
@@ -108,7 +109,7 @@ class CometChatStartCallActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@CometChatStartCallActivity, CometChatUI::class.java))
+        super.onBackPressed()
     }
 
     private fun isMyServiceRunning(serviceClass: Class<out OngoingCallService?>): Boolean {

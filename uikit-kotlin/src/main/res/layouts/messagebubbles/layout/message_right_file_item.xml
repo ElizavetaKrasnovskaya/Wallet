@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content" />
                 <LinearLayout
                     android:background="@drawable/cc_rounded_date_button"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:backgroundTint="@color/borderVerification"
                     android:padding="5dp"
                     android:gravity="center_horizontal"
                     android:layout_toEndOf="@+id/tvFileName"

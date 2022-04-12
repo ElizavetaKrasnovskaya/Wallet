@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:focusable="true"
+    android:background="@color/dark_purple"
     android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui_components.chats.CometChatConversationList">
@@ -14,7 +15,7 @@
             android:text="@string/calls"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/textColorWhite"
             android:id="@+id/tv_title"
             android:layout_margin="16dp"
             android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
             android:id="@+id/add_phone_iv"
             android:layout_margin="16dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_new_call"
+            android:background="@drawable/ic_new_call"
+            android:backgroundTint="@color/orange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -37,7 +39,7 @@
         app:tabGravity="fill"
         app:tabIndicatorGravity="bottom"
         app:tabIndicatorFullWidth="false"
-        app:tabTextColor="@color/primaryTextColor"
+        app:tabTextColor="@color/orange"
         app:tabSelectedTextColor="@color/textColorWhite"
         app:tabMode="fixed">
     </com.google.android.material.tabs.TabLayout>

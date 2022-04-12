@@ -16,13 +16,14 @@
     forward messages-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/forward_toolbar"
             android:layout_width="match_parent"
             app:title="Forward Message"
-            app:navigationIcon="@drawable/ic_back"
+            app:titleTextColor="@color/textColorWhite"
             android:layout_height="wrap_content"/>
 
         <!--Search_View - This layout is used to search conversations-->
@@ -42,6 +43,8 @@
                 android:imeOptions="actionSearch"
                 android:maxLines="1"
                 android:inputType="text"
+                android:textColorHint="@color/textColorWhite"
+                android:textColor="@color/textColorWhite"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
                 android:padding="8dp"
@@ -90,16 +93,17 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:text="@string/send"
-            tools:visibility="visible"
             android:id="@+id/btn_forward"
-            android:visibility="gone"
-            app:cornerRadius="25dp"
-            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/textColorWhite"
+            android:text="@string/send"
+            android:visibility="gone"
+            app:cornerRadius="25dp"
+            tools:visibility="visible" />
     </RelativeLayout>
 </layout>

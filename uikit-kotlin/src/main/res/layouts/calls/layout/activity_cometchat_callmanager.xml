@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".ui_components.calls.call_manager.CometChatCallActivity">
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         app:cardCornerRadius="16dp"
         android:id="@+id/incoming_call_view"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/primaryTextColor"
+        app:cardBackgroundColor="@color/dark_purple"
         android:layout_height="wrap_content">
         <RelativeLayout
             android:padding="16dp"
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/caller_name"
-                android:layout_marginLeft="16dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/textColorWhite"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -30,19 +31,12 @@
                 android:id="@+id/call_type"
                 android:layout_marginTop="8dp"
                 android:layout_below="@+id/caller_name"
-                android:layout_marginLeft="16dp"
+                android:layout_centerHorizontal="true"
                 android:textColor="@color/light_grey"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 tools:text="@tools:sample/full_names"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-            <com.cometchat.pro.uikit.ui_components.shared.cometchatAvatar.CometChatAvatar
-                android:layout_width="48dp"
-                android:id="@+id/caller_av"
-                android:layout_margin="16dp"
-                android:layout_alignParentEnd="true"
-                tools:src="@tools:sample/avatars"
-                android:layout_height="48dp"/>
             <LinearLayout
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal"

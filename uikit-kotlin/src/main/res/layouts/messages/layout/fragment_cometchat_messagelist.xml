@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:animateLayoutChanges="true"
     android:layout_height="match_parent"
+    android:background="@color/dark_purple"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -71,11 +72,13 @@
                 android:id="@+id/tv_message_layout_title"
                 tools:text="Edit Message"
                 android:textStyle="bold"
+                android:textColor="@color/textColorWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tv_message_layout_subtitle"
                 tools:text="Perfect! I've been waiting to go"
+                android:textColor="@color/textColorWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -153,22 +156,22 @@
 
 
     <FrameLayout
+        android:id="@+id/live_reactions_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/live_reactions_layout"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp" />
 
     <LinearLayout
         android:visibility="gone"
         android:id="@+id/blocked_user_layout"
         android:padding="16dp"
-        android:background="@color/bottom"
+        android:background="@color/borderVerification"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/textColorWhite"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             android:id="@+id/tv_blocked_user_name"
@@ -180,7 +183,7 @@
             android:layout_margin="16dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/secondaryTextColor"
+            android:textColor="@color/textColorWhite"
             android:text="@string/you_wont_be_able_send_or_receive_messages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -188,6 +191,8 @@
             android:layout_width="match_parent"
             app:cornerRadius="8dp"
             android:text="@string/unblock"
+            android:textColor="@color/textColorWhite"
+            android:backgroundTint="@color/orange"
             android:id="@+id/btn_unblock_user"
             android:layout_height="wrap_content"/>
     </LinearLayout>

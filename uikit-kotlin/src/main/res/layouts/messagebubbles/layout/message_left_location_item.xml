@@ -11,6 +11,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/dark_purple"
     android:layout_marginBottom="8dp">
 
     <RelativeLayout
@@ -41,7 +42,7 @@
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/message_bubble_grey"
+            app:cardBackgroundColor="@color/orange"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="1dp">
             <RelativeLayout
@@ -65,13 +66,13 @@
                         android:id="@+id/tv_place_name"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
-                        android:textColor="@color/primaryTextColor"
+                        android:textColor="@color/textColorWhite"
                         android:textStyle="bold"
                         android:textSize="15sp"
                         android:padding="4dp"
                         android:text="Address"/>
                     <TextView
-                        android:textColor="@color/secondaryTextColor"
+                        android:textColor="@color/textColorWhite"
                         android:id="@+id/sender_location_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -83,7 +84,7 @@
                         android:paddingBottom="4dp"/>
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
-                        android:textColor="@color/primaryTextColor"
+                        android:textColor="@color/textColorWhite"
                         android:text="@string/navigate"
                         app:cornerRadius="8dp"
                         android:visibility="gone"

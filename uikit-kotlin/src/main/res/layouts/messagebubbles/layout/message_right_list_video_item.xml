@@ -37,7 +37,7 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:src="@drawable/ic_defaulf_image"
-                    android:background="@color/textColorWhite"
+                    android:background="@color/orange"
                     android:scaleType="centerCrop"
                     android:adjustViewBounds="true" />
                 <ImageView

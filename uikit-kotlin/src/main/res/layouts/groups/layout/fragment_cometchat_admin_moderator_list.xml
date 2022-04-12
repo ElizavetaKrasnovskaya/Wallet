@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/dark_purple"
     tools:context=".ui_components.groups.admin_moderator_list.CometChatAdminModeratorList">
 
     <ProgressBar
@@ -16,10 +17,10 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         app:title="Administrators"
+        app:titleTextColor="@color/textColorWhite"
         android:layout_width="match_parent"
         android:id="@+id/admin_toolbar"
-        android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/ic_back"/>
+        android:layout_height="wrap_content"/>
 
 
 
@@ -44,14 +45,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:src="@drawable/ic_add"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/orange"/>
         <TextView
             android:id="@+id/add_as_tv"
             android:layout_toEndOf="@+id/ivNotification"
             android:layout_marginStart="16dp"
             android:text="@string/assign_as_admin"
             android:layout_centerVertical="true"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/textColorWhite"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

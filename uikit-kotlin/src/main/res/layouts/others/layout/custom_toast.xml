@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/group_layout"
     android:background="@drawable/cc_message_bubble_right"
-    android:backgroundTint="@color/primaryTextColor"
+    android:backgroundTint="@color/orange"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <TextView

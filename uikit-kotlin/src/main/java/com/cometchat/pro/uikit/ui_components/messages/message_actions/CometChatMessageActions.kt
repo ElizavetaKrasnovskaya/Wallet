@@ -22,7 +22,7 @@ import org.json.JSONObject
 class CometChatMessageActions : BottomSheetDialogFragment() {
 
     private val INITIAL_REACTION_COUNT = 5
-    private lateinit var threadMessage: TextView
+    //private lateinit var threadMessage: TextView
     private lateinit var editMessage: TextView
     private lateinit var replyMessage: TextView
     private lateinit var forwardMessage: TextView
@@ -58,22 +58,22 @@ class CometChatMessageActions : BottomSheetDialogFragment() {
 
     private fun fetchArguments() {
         if (arguments != null) {
-            isCopyVisible = arguments!!.getBoolean("copyVisible")
-            isThreadVisible = arguments!!.getBoolean("threadVisible")
-            isEditVisible = arguments!!.getBoolean("editVisible")
-            isDeleteVisible = arguments!!.getBoolean("deleteVisible")
-            isReplyVisible = arguments!!.getBoolean("replyVisible")
-            isForwardVisible = arguments!!.getBoolean("forwardVisible")
-            isShareVisible = arguments!!.getBoolean("shareVisible")
-            isMessageInfoVisible = arguments!!.getBoolean("messageInfoVisible")
-            isReactionVisible = arguments!!.getBoolean("reactionVisible")
-            isSendMessagePrivatelyVisible = arguments!!.getBoolean("sendMessagePrivately")
-            isReplyPrivatelyVisible = arguments!!.getBoolean("replyPrivately")
-            var string = arguments!!.getString("metadata")
+            isCopyVisible = requireArguments().getBoolean("copyVisible")
+            isThreadVisible = requireArguments().getBoolean("threadVisible")
+            isEditVisible = requireArguments().getBoolean("editVisible")
+            isDeleteVisible = requireArguments().getBoolean("deleteVisible")
+            isReplyVisible = requireArguments().getBoolean("replyVisible")
+            isForwardVisible = requireArguments().getBoolean("forwardVisible")
+            isShareVisible = requireArguments().getBoolean("shareVisible")
+            isMessageInfoVisible = requireArguments().getBoolean("messageInfoVisible")
+            isReactionVisible = requireArguments().getBoolean("reactionVisible")
+            isSendMessagePrivatelyVisible = requireArguments().getBoolean("sendMessagePrivately")
+            isReplyPrivatelyVisible = requireArguments().getBoolean("replyPrivately")
+            var string = requireArguments().getString("metadata")
             if (string != null)
                 metadata = JSONObject(string)
 
-            type = arguments!!.getString("type")
+            type = requireArguments().getString("type")
         }
     }
 
@@ -89,7 +89,7 @@ class CometChatMessageActions : BottomSheetDialogFragment() {
             behavior.state = BottomSheetBehavior.STATE_EXPANDED
             behavior.peekHeight = 0
         }
-        threadMessage = views.findViewById(R.id.start_thread)
+        //threadMessage = views.findViewById(R.id.start_thread)
         editMessage = views.findViewById(R.id.edit_message)
         replyMessage = views.findViewById(R.id.reply_message)
         forwardMessage = views.findViewById(R.id.forward_message)
@@ -101,7 +101,7 @@ class CometChatMessageActions : BottomSheetDialogFragment() {
         sendMessagePrivately = views.findViewById(R.id.send_message_privately)
         replyPrivately = views.findViewById(R.id.reply_privately)
 
-        if (isThreadVisible) threadMessage.visibility = View.VISIBLE else threadMessage.visibility = View.GONE
+        //if (isThreadVisible) threadMessage.visibility = View.VISIBLE else threadMessage.visibility = View.GONE
         if (isCopyVisible) copyMessage.visibility = View.VISIBLE else copyMessage.visibility = View.GONE
         if (isEditVisible) editMessage.visibility = View.VISIBLE else editMessage.visibility = View.GONE
         if (isDeleteVisible) deleteMessage.visibility = View.VISIBLE else deleteMessage.visibility = View.GONE
@@ -132,9 +132,9 @@ class CometChatMessageActions : BottomSheetDialogFragment() {
         }
 
         val imageView = ImageView(context)
-        imageView.setImageDrawable(ContextCompat.getDrawable(context!!,R.drawable.ic_reactions))
+        imageView.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_reactions))
 //        imageView.setColorFilter(R.color.primaryTextColor)
-        val layoutParam: LinearLayout.LayoutParams = LinearLayout.LayoutParams(Utils.dpToPx(context!!,32f).toInt(), Utils.dpToPx(context!!,32f).toInt())
+        val layoutParam: LinearLayout.LayoutParams = LinearLayout.LayoutParams(Utils.dpToPx(requireContext(),32f).toInt(), Utils.dpToPx(requireContext(),32f).toInt())
         layoutParam.topMargin = 8
         layoutParam.leftMargin = 16
         imageView.layoutParams = layoutParam
@@ -147,10 +147,10 @@ class CometChatMessageActions : BottomSheetDialogFragment() {
 
 
 
-        threadMessage.setOnClickListener {
-            if (messageActionListener != null) messageActionListener!!.onThreadMessageClick()
-            dismiss()
-        }
+//        threadMessage.setOnClickListener {
+//            if (messageActionListener != null) messageActionListener!!.onThreadMessageClick()
+//            dismiss()
+//        }
         copyMessage.setOnClickListener {
             if (messageActionListener != null) messageActionListener!!.onCopyMessageClick()
             dismiss()

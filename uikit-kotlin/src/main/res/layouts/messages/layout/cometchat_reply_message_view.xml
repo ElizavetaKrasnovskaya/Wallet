@@ -19,6 +19,7 @@
         <TextView
             android:id="@+id/tv_reply_layout_title"
             tools:text="@tools:sample/full_names"
+            android:textColor="@color/textColorWhite"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -26,6 +27,7 @@
             android:textStyle="italic"
             android:drawablePadding="8dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/textColorWhite"
             android:id="@+id/tv_reply_layout_subtitle"
             tools:text="Perfect! I've been waiting to go"
             android:layout_width="wrap_content"
@@ -42,7 +44,8 @@
         android:foreground="?attr/selectableItemBackground"
         android:id="@+id/iv_reply_close"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_close"
+        android:background="@drawable/ic_close"
+        android:backgroundTint="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </RelativeLayout>

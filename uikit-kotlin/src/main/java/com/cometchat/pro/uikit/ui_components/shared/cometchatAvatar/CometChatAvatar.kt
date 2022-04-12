@@ -196,9 +196,7 @@ class CometChatAvatar : AppCompatImageView {
         imageSize = height
         cornerRadius = Utils.dpToPixel(2f, resources).toInt()
         paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        if (UIKitSettings.color != null && UIKitSettings.color.isNotEmpty()) {
-            paint?.color = Color.parseColor(UIKitSettings.color)
-        } else paint?.color = resources.getColor(R.color.colorPrimary)
+        paint?.color = resources.getColor(R.color.orange)
         textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
         textPaint?.textSize = 16f * resources.displayMetrics.scaledDensity
         textPaint?.color = Color.WHITE
@@ -210,7 +208,7 @@ class CometChatAvatar : AppCompatImageView {
         borderPaint?.color = borderColor
         borderPaint?.isAntiAlias = true
         borderPaint?.strokeWidth = borderWidth
-        color = if (UIKitSettings.color != null && UIKitSettings.color.isEmpty()) Color.parseColor(UIKitSettings.color) else resources.getColor(R.color.colorPrimary)
+        color = resources.getColor(R.color.orange)
         outlineProvider = OutlineProvider()
     }
 

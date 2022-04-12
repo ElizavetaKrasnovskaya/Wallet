@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:background="@color/dark_purple"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui_components.groups.group_list.CometChatGroupList">
     <RelativeLayout
@@ -15,7 +16,7 @@
             android:text="@string/groups"
             android:id="@+id/tv_title"
             android:textSize="22sp"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/textColorWhite"
             android:textStyle="bold"
             android:layout_margin="16dp"
             android:layout_width="match_parent"
@@ -27,7 +28,8 @@
             android:id="@+id/create_group"
             android:layout_margin="16dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_create"
+            android:background="@drawable/ic_create"
+            android:backgroundTint="@color/orange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
@@ -47,6 +49,8 @@
             android:inputType="text"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="5dp"
+            android:textColorHint="@color/textColorWhite"
+            android:textColor="@color/textColorWhite"
             android:padding="8dp"
             android:background="@drawable/search_box"
             android:layout_width="match_parent"

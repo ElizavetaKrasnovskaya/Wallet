@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cometchat.pro.constants.CometChatConstants
 import com.cometchat.pro.core.Call
@@ -45,7 +46,6 @@ class CometChatCallActivity : AppCompatActivity(), View.OnClickListener {
     //Incoming Call Screen
     private var callerName: TextView? = null
     private var callMessage: TextView? = null
-    private var callerAvatar: CometChatAvatar? = null
     private var acceptCall: MaterialButton? = null
     private var declineCall: MaterialButton? = null
     private var incomingCallView: MaterialCardView? = null
@@ -68,6 +68,7 @@ class CometChatCallActivity : AppCompatActivity(), View.OnClickListener {
     private var notification: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         callActivity = this
         handleIntent()
         setContentView(R.layout.activity_cometchat_callmanager)
@@ -114,7 +115,6 @@ class CometChatCallActivity : AppCompatActivity(), View.OnClickListener {
     private fun initView() {
         callerName = findViewById(R.id.caller_name)
         callMessage = findViewById(R.id.call_type)
-        callerAvatar = findViewById(R.id.caller_av)
         acceptCall = findViewById(R.id.accept_incoming)
         acceptCall!!.setOnClickListener(this)
         declineCall = findViewById(R.id.decline_incoming)
@@ -127,6 +127,7 @@ class CometChatCallActivity : AppCompatActivity(), View.OnClickListener {
         hangUp = findViewById(R.id.call_hang_btn)
         tvDots = findViewById(R.id.tv_dots)
         hangUp!!.setOnClickListener(this)
+        callerName?.setTextColor(this.resources.getColor(R.color.textColorWhite))
         hangUp!!.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_600))
         mainView = findViewById(R.id.main_view)
         cometChatAudioHelper = CometChatAudioHelper(this)
@@ -152,7 +153,6 @@ class CometChatCallActivity : AppCompatActivity(), View.OnClickListener {
         userTv!!.text = name
         callerName!!.text = name
         userAv!!.setAvatar(avatar)
-        callerAvatar!!.setAvatar(avatar)
     }
 
     /**
@@ -279,7 +279,6 @@ class CometChatCallActivity : AppCompatActivity(), View.OnClickListener {
     fun startOnGoingCall(call: Call?) {}
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
     }
 
     override fun onResume() {

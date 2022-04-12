@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:elevation="4dp"
     android:orientation="vertical"
+    android:background="@color/dark_purple"
     android:padding="8dp">
 
     <HorizontalScrollView
@@ -21,19 +22,20 @@
             android:orientation="horizontal" />
     </HorizontalScrollView>
 
-    <TextView
-        android:id="@+id/start_thread"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:drawableStart="@drawable/ic_threaded_message"
-        android:drawablePadding="16dp"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:text="@string/start_thread"
-        android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+<!--    <TextView-->
+<!--        android:id="@+id/start_thread"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:clickable="true"-->
+<!--        android:drawableStart="@drawable/ic_threaded_message"-->
+<!--        android:drawableTint="@color/orange"-->
+<!--        android:drawablePadding="16dp"-->
+<!--        android:foreground="?attr/selectableItemBackground"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="@string/start_thread"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/textColorWhite"/>-->
 
     <TextView
         android:id="@+id/reply_message"
@@ -41,19 +43,21 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableStart="@drawable/ic_reply_message"
+        android:drawableTint="@color/orange"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:padding="16dp"
         android:text="@string/reply_message"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/copy_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:drawableTint="@color/orange"
         android:drawableStart="@drawable/ic_copy_paste"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
@@ -61,7 +65,7 @@
         android:padding="16dp"
         android:text="@string/copy_message"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/forward_message"
@@ -69,19 +73,21 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableStart="@drawable/ic_forward_message"
+        android:drawableTint="@color/orange"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:padding="16dp"
         android:text="@string/forward_message"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/share_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:drawableTint="@color/orange"
         android:drawableStart="@drawable/ic_share"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
@@ -89,13 +95,14 @@
         android:padding="16dp"
         android:text="@string/share_message"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/edit_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:drawableTint="@color/orange"
         android:drawableStart="@drawable/ic_edit"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
@@ -103,13 +110,14 @@
         android:padding="16dp"
         android:text="@string/edit_message"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/send_message_privately"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:drawableTint="@color/orange"
         android:drawableStart="@drawable/ic_send_message_in_private"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
@@ -117,13 +125,14 @@
         android:padding="16dp"
         android:text="@string/send_message_privately"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/reply_privately"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:drawableTint="@color/orange"
         android:drawableStart="@drawable/ic_reply_message_in_private"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
@@ -131,7 +140,7 @@
         android:padding="16dp"
         android:text="@string/reply_privately"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
+        android:textColor="@color/textColorWhite"/>
 
     <TextView
         android:id="@+id/delete_message"
@@ -152,6 +161,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:drawableTint="@color/orange"
         android:drawableStart="@drawable/ic_info"
         android:drawablePadding="16dp"
         android:foreground="?attr/selectableItemBackground"
@@ -159,7 +169,5 @@
         android:padding="16dp"
         android:text="@string/message_information"
         android:textStyle="bold"
-        android:textColor="@color/optionsColor"/>
-
-
+        android:textColor="@color/textColorWhite"/>
 </LinearLayout>

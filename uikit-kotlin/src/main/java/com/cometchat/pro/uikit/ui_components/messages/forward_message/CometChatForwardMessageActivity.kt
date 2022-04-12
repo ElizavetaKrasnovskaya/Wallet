@@ -1,7 +1,6 @@
 package com.cometchat.pro.uikit.ui_components.messages.forward_message
 
 import android.Manifest
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -23,6 +22,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -36,7 +36,7 @@ import com.cometchat.pro.core.ConversationsRequest.ConversationsRequestBuilder
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.*
 import com.cometchat.pro.uikit.R
-import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
+import com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageListActivity
 import com.cometchat.pro.uikit.ui_components.shared.cometchatConversations.CometChatConversation
 import com.cometchat.pro.uikit.ui_components.shared.cometchatConversations.CometChatConversationsAdapter
 import com.cometchat.pro.uikit.ui_resources.constants.UIKitConstants
@@ -51,9 +51,6 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import org.json.JSONException
 import org.json.JSONObject
-import java.lang.Exception
-import java.lang.IllegalArgumentException
-import java.util.*
 
 /**
  * Purpose - CometChatForwardMessageScreenActivity class is a fragment used to display list of users to which
@@ -87,14 +84,17 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
     private var messageCategory = CometChatConstants.CATEGORY_MESSAGE
 
     private var uri: Uri? = null
-    private var sendIntent : String? = null
+    private var sendIntent: String? = null
     private var sendIntentType: String? = null
-    var progressDialog: ProgressDialog? = null
+
+    //var progressDialog: ProgressDialog? = null
+    var clickedConversation: Conversation? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cometchat_forward_message)
+        supportActionBar?.hide()
         fontUtils = FontUtils.getInstance(this)
         checkPermissions()
         handleIntent()
@@ -104,8 +104,10 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
     private fun checkPermissions() {
         if (!Utils.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        UIKitConstants.RequestCode.RECORD)
+                requestPermissions(
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    UIKitConstants.RequestCode.RECORD
+                )
             }
         }
     }
@@ -128,6 +130,7 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
             Log.e(TAG, "handleSendImage: $uri")
         }
     }
+
     fun handleSendVideo(intent: Intent) {
         val imageUri = intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as Uri
         if (imageUri != null) {
@@ -160,7 +163,6 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
 //            Log.e(TAG, "handleSendAudio: $mediaMessageUrl")
         }
     }
-
 
 
     /**
@@ -197,19 +199,24 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
             textMessage = intent.getStringExtra(CometChatConstants.MESSAGE_TYPE_TEXT).toString()
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_URL)) {
-            mediaMessageUrl = intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_URL)
+            mediaMessageUrl =
+                intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_URL)
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_SIZE)) {
-            mediaMessageSize = intent.getIntExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_SIZE, 0)
+            mediaMessageSize =
+                intent.getIntExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_SIZE, 0)
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_EXTENSION)) {
-            mediaMessageExtension = intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_EXTENSION)
+            mediaMessageExtension =
+                intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_EXTENSION)
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_NAME)) {
-            mediaMessageName = intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_NAME)
+            mediaMessageName =
+                intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_NAME)
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_MIME_TYPE)) {
-            mediaMessageMime = intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_MIME_TYPE)
+            mediaMessageMime =
+                intent.getStringExtra(UIKitConstants.IntentStrings.MESSAGE_TYPE_IMAGE_MIME_TYPE)
         }
         if (intent.hasExtra(UIKitConstants.IntentStrings.ID)) {
             id = intent.getIntExtra(UIKitConstants.IntentStrings.ID, 0)
@@ -221,7 +228,8 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
             lon = getIntent().getDoubleExtra(UIKitConstants.IntentStrings.LOCATION_LONGITUDE, 0.0)
         }
         if (getIntent().hasExtra(UIKitConstants.IntentStrings.MESSAGE_CATEGORY)) {
-            messageCategory = getIntent().getStringExtra(UIKitConstants.IntentStrings.MESSAGE_CATEGORY).toString()
+            messageCategory =
+                getIntent().getStringExtra(UIKitConstants.IntentStrings.MESSAGE_CATEGORY).toString()
         }
     }
 
@@ -231,10 +239,10 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
     fun init() {
         // Inflate the layout
         val toolbar = findViewById<MaterialToolbar>(R.id.forward_toolbar)
-        setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (Utils.changeToolbarFont(toolbar) != null) {
-            Utils.changeToolbarFont(toolbar)?.typeface = fontUtils?.getTypeFace(FontUtils.robotoMedium)
+            Utils.changeToolbarFont(toolbar)?.typeface =
+                fontUtils?.getTypeFace(FontUtils.robotoMedium)
         }
         selectedUsers = findViewById(R.id.selected_user)
         forwardBtn = findViewById(R.id.btn_forward)
@@ -252,13 +260,17 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
 
             override fun afterTextChanged(editable: Editable) {
                 if (editable.toString().isNotEmpty()) {
-                    if (cometChatConversationsAdapter != null) cometChatConversationsAdapter?.filter?.filter(editable.toString())
+                    if (cometChatConversationsAdapter != null) cometChatConversationsAdapter?.filter?.filter(
+                        editable.toString()
+                    )
                 }
             }
         })
         etSearch?.setOnEditorActionListener(OnEditorActionListener { textView: TextView, i: Int, keyEvent: KeyEvent? ->
             if (i == EditorInfo.IME_ACTION_SEARCH) {
-                if (cometChatConversationsAdapter != null) cometChatConversationsAdapter?.filter?.filter(textView.text.toString())
+                if (cometChatConversationsAdapter != null) cometChatConversationsAdapter?.filter?.filter(
+                    textView.text.toString()
+                )
                 clearSearch?.visibility = View.VISIBLE
                 return@OnEditorActionListener true
             }
@@ -267,7 +279,8 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
         clearSearch?.setOnClickListener(View.OnClickListener { view1: View? ->
             etSearch?.setText("")
             clearSearch?.visibility = View.GONE
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             // Hide the soft keyboard
             inputMethodManager.hideSoftInputFromWindow(etSearch?.windowToken, 0)
         })
@@ -279,6 +292,7 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
             override fun OnItemClick(t: Any, position: Int) {
                 if (userList != null && userList.size < 5) {
                     var conversation: Conversation = t as Conversation
+                    clickedConversation = conversation
                     if (!userList.containsKey(conversation.conversationId)) {
                         userList[conversation.conversationId] = conversation
                         val chip = Chip(this@CometChatForwardMessageActivity)
@@ -290,11 +304,16 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                             avatar = (conversation.conversationWith as Group).icon
                         }
                         chip.text = name
-                        Glide.with(this@CometChatForwardMessageActivity).load(avatar).placeholder(R.drawable.ic_users).transform(CircleCrop()).into(object : SimpleTarget<Drawable?>() {
-                            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
-                                chip.chipIcon = resource
-                            }
-                        })
+                        Glide.with(this@CometChatForwardMessageActivity).load(avatar)
+                            .placeholder(R.drawable.ic_users).transform(CircleCrop())
+                            .into(object : SimpleTarget<Drawable?>() {
+                                override fun onResourceReady(
+                                    resource: Drawable,
+                                    transition: Transition<in Drawable?>?
+                                ) {
+                                    chip.chipIcon = resource
+                                }
+                            })
                         chip.isCloseIconVisible = true
                         chip.setOnCloseIconClickListener { vw ->
                             userList.remove(conversation.conversationId)
@@ -305,14 +324,17 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                     }
                     checkUserList()
                 } else {
-                    ErrorMessagesUtils.showCometChatErrorDialog(this@CometChatForwardMessageActivity, resources.getString(R.string.something_went_wrong_please_try_again))
+                    ErrorMessagesUtils.showCometChatErrorDialog(
+                        this@CometChatForwardMessageActivity,
+                        resources.getString(R.string.something_went_wrong_please_try_again)
+                    )
                 }
             }
         })
 
         //It sends message to selected users present in userList using thread. So UI thread doesn't get heavy.
         forwardBtn?.setOnClickListener(View.OnClickListener {
-            progressDialog = ProgressDialog.show(this, "", "Sending Media Message")
+            //progressDialog = ProgressDialog.show(this, "", "Sending Media Message")
             if (messageCategory == CometChatConstants.CATEGORY_MESSAGE) {
                 if (messageType != null && messageType == CometChatConstants.MESSAGE_TYPE_TEXT) {
                     Thread(Runnable {
@@ -332,10 +354,97 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                             message = TextMessage(uid, textMessage, type)
                             sendMessage(message)
                             if (i == userList.size - 1) {
-                                val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                startActivity(intent)
-                                finish()
+                                if (clickedConversation?.conversationWith is Group) {
+                                    (clickedConversation?.conversationWith as Group).name
+                                    //val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
+
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                                startActivity(intent)
+//                                finish()
+                                    val intent = Intent(
+                                        this@CometChatForwardMessageActivity,
+                                        CometChatMessageListActivity::class.java
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.NAME,
+                                        (clickedConversation?.conversationWith as Group).name
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.GROUP_OWNER,
+                                        (clickedConversation?.conversationWith as Group).owner
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.GUID,
+                                        (clickedConversation?.conversationWith as Group).guid
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.AVATAR,
+                                        (clickedConversation?.conversationWith as Group).icon
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.GROUP_TYPE,
+                                        (clickedConversation?.conversationWith as Group).groupType
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.TYPE,
+                                        CometChatConstants.RECEIVER_TYPE_GROUP
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.MEMBER_COUNT,
+                                        (clickedConversation?.conversationWith as Group).membersCount
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.GROUP_DESC,
+                                        (clickedConversation?.conversationWith as Group).description
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.GROUP_PASSWORD,
+                                        (clickedConversation?.conversationWith as Group).password
+                                    )
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    (clickedConversation?.conversationWith as User).name
+                                    val intent = Intent(
+                                        this,
+                                        CometChatMessageListActivity::class.java
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.UID,
+                                        (clickedConversation?.conversationWith as User).uid
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.AVATAR,
+                                        (clickedConversation?.conversationWith as User).avatar
+                                    )
+
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.STATUS,
+                                        (clickedConversation?.conversationWith as User).status
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.NAME,
+                                        (clickedConversation?.conversationWith as User).name
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.TYPE,
+                                        CometChatConstants.RECEIVER_TYPE_USER
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.LINK,
+                                        (clickedConversation?.conversationWith as User).link
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.AVATAR,
+                                        (clickedConversation?.conversationWith as User).avatar
+                                    )
+                                    intent.putExtra(
+                                        UIKitConstants.IntentStrings.AVATAR,
+                                        (clickedConversation?.conversationWith as User).avatar
+                                    )
+                                    startActivity(intent)
+                                    finish()
+                                }
                             }
                         }
                     }).start()
@@ -365,8 +474,52 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                             Log.e(TAG, "onClick: $attachment")
                             sendMediaMessage(message)
                             if (i == userList.size - 1) {
-                                val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                (clickedConversation?.conversationWith as Group).name
+                                //val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
+
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                                startActivity(intent)
+//                                finish()
+                                val intent = Intent(
+                                    this@CometChatForwardMessageActivity,
+                                    CometChatMessageListActivity::class.java
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.NAME,
+                                    (clickedConversation?.conversationWith as Group).name
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_OWNER,
+                                    (clickedConversation?.conversationWith as Group).owner
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GUID,
+                                    (clickedConversation?.conversationWith as Group).guid
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.AVATAR,
+                                    (clickedConversation?.conversationWith as Group).icon
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_TYPE,
+                                    (clickedConversation?.conversationWith as Group).groupType
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.TYPE,
+                                    CometChatConstants.RECEIVER_TYPE_GROUP
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.MEMBER_COUNT,
+                                    (clickedConversation?.conversationWith as Group).membersCount
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_DESC,
+                                    (clickedConversation?.conversationWith as Group).description
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_PASSWORD,
+                                    (clickedConversation?.conversationWith as Group).password
+                                )
                                 startActivity(intent)
                                 finish()
                             }
@@ -389,8 +542,10 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                             }
 //                            var file = MediaUtils.getRealPath(this@CometChatForwardMessageActivity, Uri.parse(mediaMessageUrl))
                             val file = uri?.let { uri ->
-                                MediaUtils.saveDriveFile(this,
-                                    uri)
+                                MediaUtils.saveDriveFile(
+                                    this,
+                                    uri
+                                )
                             }
                             Log.e(TAG, "init: " + file.toString())
                             if (file != null && messageType == CometChatConstants.MESSAGE_TYPE_IMAGE)
@@ -421,7 +576,11 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                     }.start()
                 }
             } else {
-                if (messageType != null && messageType.equals(UIKitConstants.IntentStrings.LOCATION, ignoreCase = true)) {
+                if (messageType != null && messageType.equals(
+                        UIKitConstants.IntentStrings.LOCATION,
+                        ignoreCase = true
+                    )
+                ) {
                     Thread {
                         for (i in 0 until userList!!.size) {
                             val conversation = ArrayList(userList!!.values)[i]
@@ -444,11 +603,60 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
                             } catch (e: JSONException) {
                                 e.printStackTrace()
                             }
-                            message = CustomMessage(uid, type, UIKitConstants.IntentStrings.LOCATION, customData)
+                            message = CustomMessage(
+                                uid,
+                                type,
+                                UIKitConstants.IntentStrings.LOCATION,
+                                customData
+                            )
                             sendLocationMessage(message)
                             if (i == userList.size - 1) {
-                                val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                (clickedConversation?.conversationWith as Group).name
+                                //val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
+
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                                startActivity(intent)
+//                                finish()
+                                val intent = Intent(
+                                    this@CometChatForwardMessageActivity,
+                                    CometChatMessageListActivity::class.java
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.NAME,
+                                    (clickedConversation?.conversationWith as Group).name
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_OWNER,
+                                    (clickedConversation?.conversationWith as Group).owner
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GUID,
+                                    (clickedConversation?.conversationWith as Group).guid
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.AVATAR,
+                                    (clickedConversation?.conversationWith as Group).icon
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_TYPE,
+                                    (clickedConversation?.conversationWith as Group).groupType
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.TYPE,
+                                    CometChatConstants.RECEIVER_TYPE_GROUP
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.MEMBER_COUNT,
+                                    (clickedConversation?.conversationWith as Group).membersCount
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_DESC,
+                                    (clickedConversation?.conversationWith as Group).description
+                                )
+                                intent.putExtra(
+                                    UIKitConstants.IntentStrings.GROUP_PASSWORD,
+                                    (clickedConversation?.conversationWith as Group).password
+                                )
                                 startActivity(intent)
                                 finish()
                             }
@@ -495,17 +703,52 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
     private fun sendMediaMessage(mediaMessage: MediaMessage) {
         CometChat.sendMediaMessage(mediaMessage, object : CallbackListener<MediaMessage>() {
             override fun onSuccess(mediaMessage: MediaMessage) {
-                try {
-                    if ((progressDialog != null) && progressDialog?.isShowing == true) {
-                        progressDialog?.dismiss();
-                    }
-                } catch (e: IllegalArgumentException) {
-                } catch (e: Exception) {
-                } finally {
-                    progressDialog = null
-                }
-                val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                (clickedConversation?.conversationWith as Group).name
+                //val intent = Intent(this@CometChatForwardMessageActivity, CometChatUI::class.java)
+
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                                startActivity(intent)
+//                                finish()
+                val intent = Intent(
+                    this@CometChatForwardMessageActivity,
+                    CometChatMessageListActivity::class.java
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.NAME,
+                    (clickedConversation?.conversationWith as Group).name
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.GROUP_OWNER,
+                    (clickedConversation?.conversationWith as Group).owner
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.GUID,
+                    (clickedConversation?.conversationWith as Group).guid
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.AVATAR,
+                    (clickedConversation?.conversationWith as Group).icon
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.GROUP_TYPE,
+                    (clickedConversation?.conversationWith as Group).groupType
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.TYPE,
+                    CometChatConstants.RECEIVER_TYPE_GROUP
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.MEMBER_COUNT,
+                    (clickedConversation?.conversationWith as Group).membersCount
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.GROUP_DESC,
+                    (clickedConversation?.conversationWith as Group).description
+                )
+                intent.putExtra(
+                    UIKitConstants.IntentStrings.GROUP_PASSWORD,
+                    (clickedConversation?.conversationWith as Group).password
+                )
                 startActivity(intent)
                 finish()
                 Log.d(TAG, "sendMediaMessage onSuccess: $mediaMessage")
@@ -582,6 +825,7 @@ class CometChatForwardMessageActivity : AppCompatActivity() {
         super.onPause()
         CometChat.removeMessageListener(TAG)
         userList?.clear()
+        //progressDialog?.hide()
     }
 
     public override fun onStart() {

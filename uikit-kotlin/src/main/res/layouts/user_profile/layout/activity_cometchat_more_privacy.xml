@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/dark_purple"
     tools:context=".ui_components.userProfile.privacy_and_security.CometChatMorePrivacyActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/privacy_toolbar"
         android:layout_width="match_parent"
         app:title="@string/privacy_and_security"
-        app:navigationIcon="@drawable/ic_back"
+        app:titleTextColor="@color/textColorWhite"
         android:layout_height="wrap_content"/>
 
     <RelativeLayout
@@ -28,7 +29,7 @@
             android:id="@+id/blocked_user_tv"
             android:text="@string/blocked_users"
             android:textSize="@dimen/name"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/textColorWhite"
             android:textStyle="bold"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
@@ -48,5 +49,4 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/light_grey"/>
-
 </LinearLayout>
