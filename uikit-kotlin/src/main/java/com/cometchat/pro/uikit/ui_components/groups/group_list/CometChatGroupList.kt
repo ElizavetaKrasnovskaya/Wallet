@@ -41,6 +41,7 @@ import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import com.cometchat.pro.uikit.ui_settings.enum.GroupMode
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /*
 
@@ -68,6 +69,8 @@ class CometChatGroupList constructor() : Fragment() {
     private val groupList: MutableList<Group> = ArrayList()
     private var conversationShimmer: ShimmerFrameLayout? = null
     private var tvTitle: TextView? = null
+    private var fabAddGroup: FloatingActionButton? = null
+
     public override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -80,6 +83,7 @@ class CometChatGroupList constructor() : Fragment() {
         etSearch = view.findViewById(R.id.search_bar)
         clearSearch = view.findViewById(R.id.clear_search)
         conversationShimmer = view.findViewById(R.id.shimmer_layout)
+        fabAddGroup = view.findViewById(R.id.add_group)
         tvTitle = view.findViewById(R.id.tv_title)
         tvTitle?.typeface = FontUtils.getInstance(activity).getTypeFace(FontUtils.robotoMedium)
 
@@ -102,6 +106,10 @@ class CometChatGroupList constructor() : Fragment() {
         if (FeatureRestriction.isGroupCreationEnabled()) ivCreateGroup?.visibility =
             View.VISIBLE else ivCreateGroup?.visibility = View.GONE
         tvTitle?.setTextColor(resources.getColor(R.color.textColorWhite))
+        fabAddGroup?.setOnClickListener{
+            val intent = Intent(context, CometChatCreateGroupActivity::class.java)
+            startActivity(intent)
+        }
         ivCreateGroup?.setOnClickListener(View.OnClickListener { view1: View? ->
             val intent: Intent = Intent(context, CometChatCreateGroupActivity::class.java)
             startActivity(intent)

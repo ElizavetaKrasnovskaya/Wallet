@@ -200,8 +200,8 @@ class CometChatAdminModeratorList : Fragment() {
                 fontUtils!!.getTypeFace(FontUtils.robotoMedium)
         }
         if (activity != null) {
-            (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
-            (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+            (activity as AppCompatActivity?)!!.supportActionBar?.hide()
+
         }
     }
 

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
 
@@ -8,7 +8,10 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
-        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/dark_purple</item>
+        <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/dark_purple</item>
     </style>
 
     <style name="dialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">

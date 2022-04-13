@@ -87,7 +87,7 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:boxStrokeColor="@color/borderVerification"
+                app:boxStrokeColor="@color/textColorWhite"
                 app:boxStrokeWidth="1dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -124,13 +124,13 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:boxStrokeColor="@color/borderVerification"
+                app:boxStrokeColor="@color/text_input_color"
                 app:boxStrokeWidth="1dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/group_pwd"
                     android:layout_width="match_parent"
-                    android:focusedByDefault="false"
+                    android:focusedByDefault="true"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:maxLines="1"
@@ -153,13 +153,13 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:boxStrokeColor="@color/borderVerification"
+                app:boxStrokeColor="@color/text_input_color"
                 app:boxStrokeWidth="1dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/group_cnf_pwd"
                     android:layout_width="match_parent"
-                    android:focusedByDefault="false"
+                    android:focusedByDefault="true"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:maxLines="1"
@@ -176,6 +176,8 @@
             android:layout_marginRight="32dp"
             android:text="@string/create_group"
             android:id="@+id/btn_create_group"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/textColorWhite"
             android:padding="16dp"
             app:cornerRadius="12dp"
             android:layout_centerHorizontal="true"

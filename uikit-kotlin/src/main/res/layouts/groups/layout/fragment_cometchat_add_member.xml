@@ -44,6 +44,8 @@
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
                 android:padding="8dp"
+                android:textColor="@color/textColorWhite"
+                android:textColorHint="@color/textColorWhite"
                 android:background="@drawable/search_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

@@ -156,19 +156,21 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
         ivArrow = findViewById(R.id.ivArrow)
         etComposeBox = findViewById(R.id.etComposeBox)
         rlActionContainer = findViewById(R.id.rlActionContainers)
+        ivAudio?.visibility = View.GONE
 
+        ivMic?.visibility = View.GONE
 //        ivArrow!!.imageTintList = ColorStateList.valueOf(color)
         ivCamera!!.imageTintList = ColorStateList.valueOf(color)
         ivGallery!!.imageTintList = ColorStateList.valueOf(color)
         ivFile!!.imageTintList = ColorStateList.valueOf(color)
 //        ivSend!!.imageTintList = ColorStateList.valueOf(color)
 
-        ivAudio!!.setOnClickListener(this)
+        //ivAudio!!.setOnClickListener(this)
         ivArrow!!.setOnClickListener(this)
         ivSend!!.setOnClickListener(this)
         ivDelete!!.setOnClickListener(this)
         ivFile!!.setOnClickListener(this)
-        ivMic!!.setOnClickListener(this)
+        //ivMic!!.setOnClickListener(this)
         ivGallery!!.setOnClickListener(this)
         ivCamera!!.setOnClickListener(this)
 
@@ -254,7 +256,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
             }
         })
         composeBox!!.setBackgroundColor(resources.getColor(R.color.darkModeBackground))
-        ivAudio!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
+        //ivAudio!!.imageTintList = ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
 //            ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_mic_white_24dp))
         flBox!!.backgroundTintList =
             ColorStateList.valueOf(resources.getColor(R.color.textColorWhite))
@@ -303,7 +305,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
 
         FeatureRestriction.isVoiceNotesEnabled(object : FeatureRestriction.OnSuccessListener {
             override fun onSuccess(p0: Boolean) {
-                if (p0 && type == null) ivMic!!.visibility = VISIBLE else ivMic!!.visibility = GONE
+                //if (p0 && type == null) ivMic!!.visibility = VISIBLE else ivMic!!.visibility = GONE
             }
 
         })
@@ -367,8 +369,8 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
             voiceMessageLayout?.visibility = View.GONE
             etComposeBox?.visibility = View.VISIBLE
             ivArrow?.visibility = View.VISIBLE
-            ivMic?.visibility = View.VISIBLE
-            ivMic?.setImageDrawable(resources.getDrawable(R.drawable.ic_microphone_circle))
+            //ivMic?.visibility = View.VISIBLE
+            //ivMic?.setImageDrawable(resources.getDrawable(R.drawable.ic_microphone_circle))
             isPlaying = false
             isRecording = false
             voiceMessage = false
@@ -392,11 +394,11 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 ivDelete!!.visibility = GONE
                 ivSend!!.visibility = View.GONE
                 ivArrow!!.visibility = View.VISIBLE
-                ivMic!!.visibility = View.VISIBLE
+                //ivMic!!.visibility = View.VISIBLE
                 isRecording = false
                 isPlaying = false
                 voiceMessage = false
-                ivMic!!.setImageResource(R.drawable.ic_microphone_circle)
+                //ivMic!!.setImageResource(R.drawable.ic_microphone_circle)
             }
         }
         if (view.id == R.id.ivAudio) {
@@ -463,7 +465,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
 //            }
             if (!isRecording) {
                 startRecord()
-                ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_stop_24dp))
+                //ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_stop_24dp))
                 isRecording = true
                 isPlaying = false
             } else {
@@ -474,7 +476,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 }
                 voiceSeekbar!!.visibility = View.VISIBLE
                 voiceMessage = true
-                ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_pause_24dp))
+                //ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_pause_24dp))
                 audioRecordView!!.visibility = View.GONE
                 ivSend!!.visibility = View.VISIBLE
                 ivDelete!!.visibility = View.VISIBLE
@@ -636,7 +638,7 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
                 recordTime!!.stop()
                 //                audioLength.setText(Utils.convertTimeStampToDurationTime(duration));
                 voiceSeekbar!!.progress = 0
-                ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
+                //ivMic!!.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
             }
         } catch (e: Exception) {
             e.message?.let { Log.e("playAudioError: ", it) }
@@ -720,11 +722,11 @@ class CometChatComposeBox : RelativeLayout, View.OnClickListener {
 //    }
 
     fun hideRecordOption(b: Boolean) {
-        if (b) {
-            ivMic?.visibility = View.GONE
-        } else {
-            ivMic?.visibility = View.VISIBLE
-        }
+//        if (b) {
+//            ivMic?.visibility = View.GONE
+//        } else {
+//            ivMic?.visibility = View.VISIBLE
+//        }
     }
 
     fun hideSendButton(b: Boolean) {

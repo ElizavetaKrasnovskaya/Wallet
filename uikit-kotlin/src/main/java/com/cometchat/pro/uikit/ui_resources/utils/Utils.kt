@@ -674,7 +674,7 @@ public class Utils {
             videoCallIntent.putExtra(UIKitConstants.IntentStrings.SESSION_ID, sessionId)
             videoCallIntent.putExtra(UIKitConstants.IntentStrings.AVATAR, user.avatar)
             videoCallIntent.action = type
-            //videoCallIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            videoCallIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             if (isOutgoing) {
                 videoCallIntent.type = "outgoing"
             } else {
@@ -691,7 +691,7 @@ public class Utils {
             videoCallIntent.putExtra(UIKitConstants.IntentStrings.SESSION_ID, sessionId)
             videoCallIntent.putExtra(UIKitConstants.IntentStrings.AVATAR, group.icon)
             videoCallIntent.action = type
-            //videoCallIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            videoCallIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             if (isOutgoing) {
                 videoCallIntent.type = "outgoing"
             } else {
@@ -782,14 +782,16 @@ public class Utils {
             val intent = Intent(activity,CometChatStartCallActivity::class.java)
             intent.putExtra(UIKitConstants.IntentStrings.SESSION_ID,call.sessionId)
             intent.putExtra(UIKitConstants.IntentStrings.IS_DEFAULT_CALL,true)
-            //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             activity.startActivity(intent)
+            activity.finish()
         }
 
         fun joinOnGoingCall(context: Context) {
             val intent = Intent(context, CometChatStartCallActivity::class.java)
             intent.putExtra(UIKitConstants.IntentStrings.SESSION_ID, getActiveCall().sessionId)
             intent.putExtra(UIKitConstants.IntentStrings.IS_DEFAULT_CALL,true)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
 

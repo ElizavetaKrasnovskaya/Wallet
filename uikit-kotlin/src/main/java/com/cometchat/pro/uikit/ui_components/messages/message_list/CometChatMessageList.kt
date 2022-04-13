@@ -461,19 +461,19 @@ class CometChatMessageList : Fragment(), View.OnClickListener, OnMessageLongClic
             override fun onKeyboardVisibilityChanged(keyboardVisible: Boolean) {
                 if (keyboardVisible) {
                     scrollToBottom()
-                    composeBox?.ivMic?.visibility = View.GONE
+                    //composeBox?.ivMic?.visibility = View.GONE
                     composeBox?.btnLiveReaction?.visibility = View.GONE
                     composeBox?.ivSend?.visibility = View.VISIBLE
                 } else {
                     composeBox?.ivSend?.visibility = View.GONE
                     composeBox?.btnLiveReaction?.visibility = View.VISIBLE
-                    composeBox?.ivMic?.visibility = View.VISIBLE
+                    //composeBox?.ivMic?.visibility = View.VISIBLE
                     FeatureRestriction.isVoiceNotesEnabled(object : FeatureRestriction.OnSuccessListener{
                         override fun onSuccess(p0: Boolean) {
                             if (p0) {
-                                composeBox!!.ivMic!!.visibility = View.VISIBLE
+                                //composeBox!!.ivMic!!.visibility = View.VISIBLE
                             } else {
-                                composeBox!!.ivMic!!.visibility = View.GONE
+                                //composeBox!!.ivMic!!.visibility = View.GONE
                                 composeBox!!.ivSend!!.visibility = View.VISIBLE
                             }
                         }
@@ -2763,7 +2763,7 @@ class CometChatMessageList : Fragment(), View.OnClickListener, OnMessageLongClic
                     isReply = false
                     tvMessageTitle?.text = resources.getString(R.string.edit_message)
                     tvMessageSubTitle?.text = (baseMessage as TextMessage).text
-                    composeBox?.ivMic?.visibility = View.GONE
+                    //composeBox?.ivMic?.visibility = View.GONE
                     composeBox?.ivSend?.visibility = View.VISIBLE
                     editMessageLayout?.visibility = View.VISIBLE
                     composeBox?.etComposeBox?.setText((baseMessage as TextMessage).text)
@@ -3211,7 +3211,7 @@ class CometChatMessageList : Fragment(), View.OnClickListener, OnMessageLongClic
                 replyMessage?.text = getString(R.string.shared_a_writeboard)
                 replyMessage?.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_writeboard_24dp, 0, 0, 0)
             }
-            composeBox?.ivMic?.visibility = View.GONE
+            //composeBox?.ivMic?.visibility = View.GONE
             composeBox?.ivSend?.visibility = View.VISIBLE
             replyMessageLayout?.visibility = View.VISIBLE
 //            if (messageAdapter != null) {

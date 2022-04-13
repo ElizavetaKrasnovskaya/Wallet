@@ -20,6 +20,7 @@ class CometChatBanMembersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cometchat_ban_members)
+        supportActionBar?.hide()
         banToolbar = findViewById(R.id.banToolbar)
         banToolbar!!.setNavigationOnClickListener(View.OnClickListener { onBackPressed() })
         handleIntent()

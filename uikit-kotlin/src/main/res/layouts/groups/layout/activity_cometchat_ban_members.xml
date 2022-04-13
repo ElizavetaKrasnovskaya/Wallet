@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/dark_purple"
     android:layout_height="match_parent"
     tools:context=".ui_components.groups.banned_members.CometChatBanMembersActivity">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/banToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:titleTextColor="@color/textColorWhite"
         app:title="@string/banned_members"/>
     <FrameLayout
         android:id="@+id/ban_member_frame"

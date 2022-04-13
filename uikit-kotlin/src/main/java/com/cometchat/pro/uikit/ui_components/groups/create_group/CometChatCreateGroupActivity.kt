@@ -17,6 +17,7 @@ class CometChatCreateGroupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_screen)
+        supportActionBar?.hide()
         val fragment: Fragment = CometChatCreateGroup()
         supportFragmentManager.beginTransaction().replace(R.id.frame_fragment, fragment).commit()
         if (UIKitSettings.color != null) window.statusBarColor = Color.parseColor(UIKitSettings.color)

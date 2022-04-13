@@ -156,6 +156,7 @@
             android:layout_height="50dp"
             android:clickable="true"
             android:focusable="true"
+            android:visibility="gone"
             android:foreground="?selectableItemBackground"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"

@@ -125,19 +125,14 @@ class CometChatAddMembers : Fragment() {
     }
 
     private fun checkDarkMode() {
-        if (Utils.isDarkMode(context!!)) {
             toolbar!!.setTitleTextColor(resources.getColor(R.color.textColorWhite))
-        } else {
-            toolbar!!.setTitleTextColor(resources.getColor(R.color.primaryTextColor))
-        }
     }
 
     private fun setToolbar(toolbar: MaterialToolbar?) {
         if (Utils.changeToolbarFont(toolbar!!) != null) {
             Utils.changeToolbarFont(toolbar)!!.typeface = fontUtils!!.getTypeFace(FontUtils.robotoMedium)
         }
-        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        (activity as AppCompatActivity?)!!.supportActionBar?.hide()
     }
 
     private fun handleArguments() {
