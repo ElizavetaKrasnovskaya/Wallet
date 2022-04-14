@@ -29,10 +29,11 @@ import com.cometchat.pro.models.Group
 import com.cometchat.pro.models.GroupMember
 import com.cometchat.pro.models.User
 import com.cometchat.pro.uikit.R
-import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
+import com.cometchat.pro.uikit.ui_components.chats.CometChatConversationList
 import com.cometchat.pro.uikit.ui_components.groups.add_members.CometChatAddMembersActivity
 import com.cometchat.pro.uikit.ui_components.groups.admin_moderator_list.CometChatAdminModeratorListActivity
 import com.cometchat.pro.uikit.ui_components.groups.banned_members.CometChatBanMembersActivity
+import com.cometchat.pro.uikit.ui_components.groups.create_group.CometChatCreateGroupActivity
 import com.cometchat.pro.uikit.ui_components.groups.group_members.CometChatGroupMemberListActivity
 import com.cometchat.pro.uikit.ui_components.groups.group_members.GroupMemberAdapter
 import com.cometchat.pro.uikit.ui_components.shared.cometchatAvatar.CometChatAvatar
@@ -569,9 +570,15 @@ class CometChatGroupDetailActivity() : AppCompatActivity() {
     }
 
     private fun launchUnified() {
-        val intent = Intent(this@CometChatGroupDetailActivity, CometChatUI::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        val intent =
+            Intent(this@CometChatGroupDetailActivity, CometChatCreateGroupActivity::class.java)
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+        onBackPressed()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
         finish()
     }
 

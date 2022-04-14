@@ -111,9 +111,15 @@
     <string name="owner_alert">Owner Alert</string>
     <string name="owner_alert_message">Please transfer group ownership to another member before leaving the group</string>
     <array name="groupType">
-        <item>Public Group</item>
-        <item>Private Group</item>
-        <item>Password Protected Group</item>
+        <item>
+            <font fgcolor='#FFFFFF'>Public Group</font>
+        </item>
+        <item>
+            <font fgcolor='#FFFFFF'>Private Group</font>
+        </item>
+        <item>
+            <font fgcolor='#FFFFFF'>Password Protected Group</font>
+        </item>
     </array>
     <!---->
 

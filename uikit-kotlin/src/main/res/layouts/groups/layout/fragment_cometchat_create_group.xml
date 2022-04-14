@@ -101,12 +101,13 @@
                     android:imeOptions="actionDone"
                     android:textColor="@color/textColorWhite" />
             </com.google.android.material.textfield.TextInputLayout>
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/grouptype_spinner"
                 android:background="@drawable/search_box"
                 android:layout_marginTop="16dp"
                 android:padding="8dp"
                 android:entries="@array/groupType"
+                android:theme="@style/Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <com.google.android.material.textfield.TextInputLayout

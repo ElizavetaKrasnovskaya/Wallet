@@ -27,4 +27,8 @@
         <item name="android:windowExitAnimation">@anim/animate_slides_up</item>
     </style>
 
+    <style name="Spinner">
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:backgroundTint">@color/borderVerification</item>
+    </style>
 </resources>

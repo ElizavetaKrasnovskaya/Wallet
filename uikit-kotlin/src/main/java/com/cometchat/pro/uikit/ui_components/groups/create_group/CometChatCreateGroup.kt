@@ -90,7 +90,7 @@ class CometChatCreateGroup : Fragment() {
         des2 = view.findViewById(R.id.tvDes2)
         types.add(getString(R.string.public_group))
         types.add(getString(R.string.private_group))
-        types.add(getString(R.string.password_protected_group))
+        //types.add(getString(R.string.password_protected_group))
         groupNameLayout = view.findViewById(R.id.input_group_name)
         groupDescLayout = view.findViewById(R.id.input_group_desc)
         groupPasswordLayout = view.findViewById(R.id.input_group_pwd)
@@ -103,6 +103,7 @@ class CometChatCreateGroup : Fragment() {
                 position: Int,
                 id: Long
             ) {
+                if (view != null) (view as TextView).setTextColor(requireContext().resources.getColor(R.color.textColorWhite))
                 when (position) {
                     0 -> {
                         groupType = CometChatConstants.GROUP_TYPE_PUBLIC
@@ -114,16 +115,20 @@ class CometChatCreateGroup : Fragment() {
                         groupPasswordLayout?.visibility = View.GONE
                         groupCnfPasswordLayout?.visibility = View.GONE
                     }
-                    2 -> {
-                        groupType = CometChatConstants.GROUP_TYPE_PASSWORD
-                        groupPasswordLayout?.visibility = View.VISIBLE
-                        groupCnfPasswordLayout?.visibility = View.VISIBLE
-                    }
+//                    2 -> {
+//                        groupType = CometChatConstants.GROUP_TYPE_PASSWORD
+//                        groupPasswordLayout?.visibility = View.VISIBLE
+//                        groupCnfPasswordLayout?.visibility = View.VISIBLE
+//                    }
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                (parent?.getChildAt(0) as TextView).setTextColor(requireContext().resources.getColor(R.color.textColorWhite))
+                (parent?.getChildAt(0) as TextView).setTextColor(
+                    requireContext().resources.getColor(
+                        R.color.textColorWhite
+                    )
+                )
             }
         }
 
