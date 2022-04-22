@@ -60,17 +60,21 @@ class WalletViewModel @Inject constructor(
     }
 
     fun createWallet(context: Application) {
+        isLoading.postValue(false)
         isLoading.postValue(true)
         wallet.postValue(interactor.createWallet(context))
         start()
         bitcoinKit.start()
+        isLoading.postValue(false)
     }
 
     fun importWallet(mnemonic: String, context: Application) {
+        isLoading.postValue(false)
         isLoading.postValue(true)
         wallet.postValue(interactor.importWallet(mnemonic, context))
         start()
         bitcoinKit.start()
+        isLoading.postValue(false)
     }
 
     fun start() {

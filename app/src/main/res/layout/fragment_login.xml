@@ -105,6 +105,7 @@
             android:autofillHints="name"
             android:background="@android:color/transparent"
             android:hint="Enter password"
+            android:inputType="textPassword"
             android:importantForAutofill="no"
             android:padding="@dimen/common_vertical_m"
             android:textColor="@color/white"
