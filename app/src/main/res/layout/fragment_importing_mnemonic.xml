@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/dark_purple"
     tools:context=".ui.auth.wallet.ImportingMnemonicFragment">
+
+    <ProgressBar
+        android:id="@+id/progress_Bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:indeterminate = "true"
+        android:max="100"
+        android:minWidth="200dp"
+        android:minHeight="50dp"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:progress="0"
+        app:layout_constraintTop_toBottomOf="@id/tvPaste"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
         android:id="@+id/ivIcon"
@@ -38,12 +54,14 @@
     <EditText
         android:id="@+id/etMnemonic"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginTop="@dimen/common_horizontal_5xl"
-        android:background="@color/dark_purple"
+        android:background="@color/light_purple"
         android:lineSpacingExtra="10sp"
         android:paddingStart="@dimen/common_vertical_l"
         android:paddingTop="@dimen/common_vertical_5xl"
+        android:hint="Enter your mnemonic"
+        android:textColorHint="@color/white"
         android:paddingEnd="@dimen/common_vertical_l"
         android:paddingBottom="@dimen/common_vertical_5xl"
         android:textColor="@color/white"
@@ -54,16 +72,16 @@
         tools:text="this text for kjfkdd kjfsgkf kjregoejfkd rke gkjfdng dmgnfk fkgj;dgr gkjrdfl" />
 
     <TextView
-        android:id="@+id/tvCopy"
+        android:id="@+id/tvPaste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/paste"
-        android:textSize="@dimen/text_size_l"
-        android:textColor="@color/orange"
-        app:layout_constraintTop_toBottomOf="@id/etMnemonic"
-        android:layout_marginEnd="@dimen/common_vertical_l"
         android:layout_marginTop="@dimen/common_vertical_l"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_marginEnd="@dimen/common_vertical_l"
+        android:text="@string/paste"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/text_size_l"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etMnemonic" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnImportWallet"

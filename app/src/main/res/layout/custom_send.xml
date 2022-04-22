@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bottom_sheet"
+    android:backgroundTint="@color/dark_purple">
+
+    <ImageButton
+        android:id="@+id/btnDownArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_vertical_4xl"
+        android:background="@drawable/ic_down_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvSendOrReceive"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_5xl"
+        android:layout_marginTop="@dimen/common_vertical_5xl"
+        android:layout_marginEnd="@dimen/common_vertical_5xl"
+        android:gravity="center"
+        android:text="How much money do you want to send?"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/text_size_xl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDownArrow" />
+
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:layout_marginTop="@dimen/common_vertical_5xl"
+        android:layout_marginEnd="@dimen/common_horizontal_m"
+        android:background="@drawable/shape_rounded_light"
+        android:hint="Enter address"
+        android:padding="@dimen/common_horizontal_m"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSendOrReceive" />
+
+    <EditText
+        android:id="@+id/etAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:layout_marginTop="@dimen/common_vertical_xl"
+        android:layout_marginEnd="@dimen/common_horizontal_m"
+        android:background="@drawable/shape_rounded_light"
+        android:hint="Enter amount"
+        android:padding="@dimen/common_horizontal_m"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etAddress" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:layout_marginTop="@dimen/common_vertical_xl"
+        android:layout_marginEnd="@dimen/common_horizontal_m"
+        android:background="@drawable/shape_rounded_light"
+        android:entries="@array/priority"
+        android:padding="@dimen/common_horizontal_m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etAmount" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSendCrypto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:layout_marginTop="@dimen/common_vertical_xl"
+        android:layout_marginEnd="@dimen/common_horizontal_m"
+        android:layout_marginBottom="@dimen/common_vertical_xl"
+        android:background="@drawable/shape_button"
+        android:backgroundTint="@color/sent"
+        android:gravity="center"
+        android:text="Send"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

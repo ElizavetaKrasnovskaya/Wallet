@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable-v24/shape_rounded_orange.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable-v24/shimmer_status.xml" value="0.115" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_bitcoin.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_down_arrow.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_password.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_receive.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_send.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/shape_general_settings_dark.xml" value="0.101" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/shape_wallet_item.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/custom_amount_send.xml" value="0.17223910840932116" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/custom_send.xml" value="0.18" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_balance.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_creating_mnemonic.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_importing_mnemonic.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_login.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/rv_wallet_item.xml" value="0.17223910840932116" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23148148148148148" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/ic_user.xml" value="0.109" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/shape_rounded_light.xml" value="0.109" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/shape_rounded_orange.xml" value="0.109" />

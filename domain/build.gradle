@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         minSdk 26
-        targetSdk 32
+        targetSdk 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -44,4 +45,8 @@ dependencies {
 
     //trust wallet
     implementation "com.trustwallet:wallet-core:2.6.16"
+
+    // Wallet kits
+    implementation 'com.github.horizontalsystems:bitcoin-kit-android:eb33b43'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
 }

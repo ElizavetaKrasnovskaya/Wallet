@@ -22,7 +22,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), View.OnClickListene
     }
 
     private fun setupObserver() {
-        viewModel.user.observe(viewLifecycleOwner) {
+        viewModel.userLiveData.observe(viewLifecycleOwner) {
             if (it != null) navigate(LoginFragmentDirections.actionLoginFragmentToWalletInfoFragment())
         }
         viewModel.error.observe(viewLifecycleOwner) {
@@ -30,16 +30,17 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), View.OnClickListene
         }
     }
 
-    private fun setupListener(){
+    private fun setupListener() {
         binding.btnLogin.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.btnLogin -> viewModel.signIn(
-                binding.etName.text.toString()
+                requireActivity(),
+                binding.etName.text.toString(),
+                binding.etPassword.text.toString()
             )
         }
     }
-
 }

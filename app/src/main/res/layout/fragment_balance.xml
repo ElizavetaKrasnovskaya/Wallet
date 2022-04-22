@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_purple"
+    tools:context=".ui.main.balance.BalanceFragment">
+
+    <TextView
+        android:id="@+id/tvBalance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_vertical_4xl"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_4xl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="0.3451 BTC" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReceive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_vertical_3xl"
+        android:background="@color/dark_purple"
+        android:drawableTop="@drawable/ic_receive"
+        android:text="Receive"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/btnSend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBalance" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_vertical_3xl"
+        android:background="@color/dark_purple"
+        android:drawableTop="@drawable/ic_send"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnReceive"
+        app:layout_constraintTop_toBottomOf="@id/tvBalance" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvWallets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_vertical_xl"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSend"
+        tools:itemCount="2"
+        tools:listitem="@layout/rv_wallet_item" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clReceived"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toBottomOf="@id/rvWallets"
+        android:layout_marginStart="@dimen/common_vertical_m"
+        android:layout_marginTop="@dimen/common_horizontal_4xl"
+        android:background="@drawable/shape_general_settings_dark"
+        app:layout_constraintBottom_toTopOf="@id/clSend"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/common_horizontal_s"
+            android:background="@drawable/ic_receive"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvReceived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:text="Received"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_l"
+        app:layout_constraintStart_toEndOf="@id/clReceived"
+        app:layout_constraintTop_toTopOf="@id/clReceived" />
+
+    <TextView
+        android:id="@+id/tvReceivedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_m"
+        app:layout_constraintStart_toEndOf="@id/clReceived"
+        app:layout_constraintTop_toBottomOf="@id/tvReceived"
+        tools:text="June 2, 8:45 AM" />
+
+    <TextView
+        android:id="@+id/tvReceivedAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/common_horizontal_m"
+        android:text="0.563 BTC"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_l"
+        app:layout_constraintBottom_toBottomOf="@id/tvReceivedDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvReceived" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clSend"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="@dimen/common_vertical_m"
+        android:layout_marginTop="@dimen/common_horizontal_4xl"
+        android:background="@drawable/shape_general_settings_dark"
+        app:layout_constraintTop_toBottomOf="@id/clReceived"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/common_horizontal_s"
+            android:background="@drawable/ic_send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:text="Received"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_l"
+        app:layout_constraintStart_toEndOf="@id/clSend"
+        app:layout_constraintTop_toTopOf="@id/clSend" />
+
+    <TextView
+        android:id="@+id/tvSendDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_horizontal_m"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_m"
+        app:layout_constraintStart_toEndOf="@id/clSend"
+        app:layout_constraintTop_toBottomOf="@id/tvSend"
+        tools:text="June 2, 8:45 AM" />
+
+    <TextView
+        android:id="@+id/tvSendAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/common_horizontal_m"
+        android:text="0.563 BTC"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_l"
+        app:layout_constraintBottom_toBottomOf="@id/tvSendDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvSend" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

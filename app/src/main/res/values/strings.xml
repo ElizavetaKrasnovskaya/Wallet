@@ -28,4 +28,10 @@
     <string name="paste">Paste</string>
     <string name="btn_import">Import</string>
     <string name="btn_create">Create</string>
+
+    <string-array name="priority">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
 </resources>

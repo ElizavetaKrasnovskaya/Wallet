@@ -3,11 +3,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 32
+    compileSdkVersion 31
 
     defaultConfig {
-        minSdkVersion 24
-        targetSdkVersion 32
+        minSdkVersion 26
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -36,7 +36,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion = '28.0.3'
+    buildToolsVersion = '30.0.2'
     sourceSets {
         main {
             res {
@@ -95,4 +95,7 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activityKtxVersion"
     def fragmentKtxVersion = "1.4.0-alpha06"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+
+    // Wallet kits
+    implementation 'com.github.horizontalsystems:bitcoin-kit-android:eb33b43'
 }

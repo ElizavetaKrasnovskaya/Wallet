@@ -5,14 +5,12 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import com.bsuir.data.const.APP_ID
 import com.bsuir.data.const.AUTH_KEY
 import com.bsuir.data.const.REGION
 import com.cometchat.pro.core.AppSettings.AppSettingsBuilder
 import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.core.CometChat.CallbackListener
-import com.cometchat.pro.core.CometChat.addConnectionListener
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.uikit.ui_components.calls.call_manager.listener.CometChatCallListener.addCallListener
 import com.cometchat.pro.uikit.ui_components.calls.call_manager.listener.CometChatCallListener.removeCallListener
@@ -22,13 +20,15 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class CryptoApp : Application() {
 
-    init{
+    init {
         System.loadLibrary("TrustWalletCore")
     }
 
     override fun onCreate() {
         super.onCreate()
-        val appSettings = AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(REGION).build()
+        instance = this
+        val appSettings =
+            AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(REGION).build()
         CometChat.init(this, APP_ID, appSettings, object : CallbackListener<String>() {
             override fun onSuccess(s: String) {
                 UIKitSettings.setAppID(APP_ID)
@@ -71,5 +71,7 @@ class CryptoApp : Application() {
 
     companion object {
         private const val TAG = "UIKitApplication"
+        lateinit var instance: CryptoApp
+            private set
     }
 }

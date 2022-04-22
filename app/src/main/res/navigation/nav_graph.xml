@@ -142,4 +142,9 @@
             android:id="@+id/action_chatFragment_to_messageFragment"
             app:destination="@id/messageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.bsuir.cryptowallet.ui.main.balance.BalanceFragment"
+        android:label="fragment_balance"
+        tools:layout="@layout/fragment_balance" />
 </navigation>

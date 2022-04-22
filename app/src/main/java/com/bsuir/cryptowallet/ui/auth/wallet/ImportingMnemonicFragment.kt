@@ -4,7 +4,8 @@ import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import com.bsuir.cryptowallet.CryptoApp
 import com.bsuir.cryptowallet.R
 import com.bsuir.cryptowallet.common.base.BaseFragment
 import com.bsuir.cryptowallet.common.delegate.viewBinding
@@ -16,7 +17,7 @@ class ImportingMnemonicFragment : BaseFragment(R.layout.fragment_importing_mnemo
     View.OnClickListener {
 
     private val binding by viewBinding<FragmentImportingMnemonicBinding>()
-    private val viewModel: WalletViewModel by viewModels()
+    private val viewModel: WalletViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,25 +27,32 @@ class ImportingMnemonicFragment : BaseFragment(R.layout.fragment_importing_mnemo
 
     private fun setupListener() {
         binding.btnImportWallet.setOnClickListener(this)
-        binding.tvCopy.setOnClickListener(this)
+        binding.tvPaste.setOnClickListener(this)
     }
 
     private fun setupObserver() {
-        viewModel.wallet.observe(viewLifecycleOwner) {
-            navigate(ImportingMnemonicFragmentDirections.actionImportingMnemonicFragmentToContactsFragment())
+        viewModel.isOperationCompleted.observe(viewLifecycleOwner) {
+            if (it) navigate(ImportingMnemonicFragmentDirections.actionImportingMnemonicFragmentToContactsFragment())
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.INVISIBLE
         }
     }
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.btnImportWallet -> viewModel.importWallet(
-                binding.etMnemonic.text.toString()
-            )
-            R.id.tvCopy -> past()
+            R.id.btnImportWallet -> {
+                viewModel.importWallet(
+                    binding.etMnemonic.text.toString(),
+                    CryptoApp.instance
+                )
+            }
+            R.id.tvPaste -> paste()
         }
     }
 
-    private fun past() {
+    private fun paste() {
         val clipboard = requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val copied = clipboard.primaryClip
         val item = copied?.getItemAt(0)

@@ -26,7 +26,7 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration), View.
     }
 
     private fun setupObserver() {
-        viewModel.user.observe(viewLifecycleOwner) {
+        viewModel.userLiveData.observe(viewLifecycleOwner) {
             if (it != null) navigate(RegistrationFragmentDirections.actionRegistrationFragmentToWalletInfoFragment())
         }
         viewModel.error.observe(viewLifecycleOwner) {
@@ -37,6 +37,7 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration), View.
     override fun onClick(view: View) {
         when (view.id) {
             R.id.btnRegister -> viewModel.signUp(
+                requireActivity(),
                 binding.etName.text.toString(),
                 binding.etPassword.text.toString()
             )

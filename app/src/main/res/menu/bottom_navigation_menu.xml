@@ -14,9 +14,14 @@
         android:title="My Chats" />
 
     <item
+        android:id="@+id/walletFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_wallet"
+        android:title="My Wallet" />
+
+    <item
         android:id="@+id/settingsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_settings"
         android:title="My Settings" />
-
 </menu>

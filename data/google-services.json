@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "811565584099",
+    "project_id": "wallet-857ce",
+    "storage_bucket": "wallet-857ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811565584099:android:b0a8919fc7bcbe150affd6",
+        "android_client_info": {
+          "package_name": "com.bsuir.cryptowallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811565584099-g48q30umf2fion9mmilkuhnv66fd9tg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbHut_mBdOuw2mN9sIyn10zp2uvjzfL8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811565584099-g48q30umf2fion9mmilkuhnv66fd9tg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
