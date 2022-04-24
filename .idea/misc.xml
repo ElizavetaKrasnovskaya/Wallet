@@ -10,6 +10,8 @@
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_password.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_receive.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/ic_send.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/selector_et.xml" value="0.3245" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/shape_bottom_sheet.xml" value="0.118" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/shape_general_settings_dark.xml" value="0.101" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/drawable/shape_wallet_item.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/custom_amount_send.xml" value="0.17223910840932116" />
@@ -19,8 +21,18 @@
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_importing_mnemonic.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_login.xml" value="0.39014373716632444" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_registration.xml" value="0.17451874366767983" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/layout/rv_wallet_item.xml" value="0.17223910840932116" />
         <entry key="..\:/AndroidStudioProjects/Wallet/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23148148148148148" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/message_action_item.xml" value="0.32382246376811596" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_message_list.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/cometchat_messagelist_toolbar.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/fragment_cometchat_messagelist.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/messages/layout/message_placeholder.xml" value="0.32382246376811596" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/drawable/ic_send_crypto.xml" value="0.221" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/others/layout/view_message_box.xml" value="0.17451874366767983" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/shared/layout/cometchat_compose_box.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/users/layout/custom_send.xml" value="0.17451874366767983" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/ic_user.xml" value="0.109" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/shape_rounded_light.xml" value="0.109" />
         <entry key="..\:/Users/Elizaveta/AndroidStudioProjects/CryptoWallet/app/src/main/res/drawable-v24/shape_rounded_orange.xml" value="0.109" />

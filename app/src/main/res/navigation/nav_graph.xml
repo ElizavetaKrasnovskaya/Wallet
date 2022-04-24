@@ -126,11 +126,6 @@
             app:destination="@id/messageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.bsuir.cryptowallet.ui.main.UserSettingsFragment"
-        android:label="fragment_user_settings"
-        tools:layout="@layout/fragment_user_settings" />
-    <fragment
         android:id="@+id/messageFragment"
         android:name="com.cometchat.pro.uikit.ui_components.messages.message_list.CometChatMessageList"
         android:label="CometChatMessageList" />
@@ -147,4 +142,13 @@
         android:name="com.bsuir.cryptowallet.ui.main.balance.BalanceFragment"
         android:label="fragment_balance"
         tools:layout="@layout/fragment_balance" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.bsuir.cryptowallet.ui.main.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
 </navigation>

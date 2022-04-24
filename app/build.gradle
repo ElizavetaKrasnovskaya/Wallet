@@ -82,4 +82,6 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     implementation 'com.google.zxing:core:3.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'com.github.horizontalsystems:ethereum-kit-android:fe01dfa'
 }

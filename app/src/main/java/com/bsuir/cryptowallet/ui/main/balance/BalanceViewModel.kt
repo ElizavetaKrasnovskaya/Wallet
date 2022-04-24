@@ -1,6 +1,5 @@
-package com.bsuir.cryptowallet.ui.auth.wallet
+package com.bsuir.cryptowallet.ui.main.balance
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import com.bsuir.data.const.KEY_BALANCE
 import com.bsuir.data.const.KEY_MNEMONIC
 import com.bsuir.data.source.local.SharedPreferencesUtil
 import com.bsuir.data.utils.NumberFormatHelper
-import com.bsuir.domain.interactor.WalletInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.horizontalsystems.bitcoincore.BitcoinCore
@@ -19,13 +17,13 @@ import io.horizontalsystems.bitcoincore.models.TransactionDataSortType
 import io.horizontalsystems.bitcoincore.models.TransactionFilterType
 import io.horizontalsystems.bitcoincore.models.TransactionInfo
 import io.horizontalsystems.bitcoinkit.BitcoinKit
+import io.horizontalsystems.ethereumkit.core.EthereumKit
 import io.reactivex.disposables.CompositeDisposable
 import wallet.core.jni.HDWallet
 import javax.inject.Inject
 
 @HiltViewModel
-class WalletViewModel @Inject constructor(
-    private val interactor: WalletInteractor,
+class BalanceViewModel @Inject constructor(
     private val shared: SharedPreferencesUtil<String>,
     @ApplicationContext private val context: Context
 ) : ViewModel(), BitcoinKit.Listener {
@@ -33,7 +31,6 @@ class WalletViewModel @Inject constructor(
     val wallet = MutableLiveData<HDWallet>()
     val balance = MutableLiveData<BalanceInfo>()
     val isOperationCompleted = MutableLiveData<Boolean>()
-    val isLoading = MutableLiveData<Boolean>()
     val receivedTransaction = MutableLiveData<TransactionInfo>()
     val sendTransaction = MutableLiveData<TransactionInfo>()
     val receivedAddress = MutableLiveData<String>()
@@ -44,23 +41,9 @@ class WalletViewModel @Inject constructor(
     private val bip = Bip.BIP44
     private val passphrase = ""
     private lateinit var bitcoinKit: BitcoinKit
-
-    fun createWallet(context: Application) {
-        isLoading.postValue(false)
-        isLoading.postValue(true)
-        wallet.postValue(interactor.createWallet(context))
-        start()
-        isLoading.postValue(false)
-        isOperationCompleted.postValue(true)
-    }
-
-    fun importWallet(mnemonic: String, context: Application) {
-        isLoading.postValue(false)
-        isLoading.postValue(true)
-        wallet.postValue(interactor.importWallet(mnemonic, context))
-        start()
-        isLoading.postValue(false)
-    }
+    private val disposables = CompositeDisposable()
+    private val disposables2 = CompositeDisposable()
+    private var transactionFilterType: TransactionFilterType? = null
 
     fun start() {
         bitcoinKit = BitcoinKit(
@@ -89,5 +72,42 @@ class WalletViewModel @Inject constructor(
         isOperationCompleted.postValue(true)
         saveBalance(balance.spendable)
         this.balance.postValue(balance)
+    }
+
+    override fun onTransactionsUpdate(
+        inserted: List<TransactionInfo>,
+        updated: List<TransactionInfo>
+    ) {
+        setTransactionFilterType(transactionFilterType)
+        setOutgoing()
+    }
+
+    fun setTransactionFilterType(transactionFilterType: TransactionFilterType?) {
+        bitcoinKit.transactions(type = TransactionFilterType.Incoming)
+            .subscribe { txList: List<TransactionInfo> ->
+                receivedTransaction.postValue(txList.first())
+            }
+    }
+
+    fun setOutgoing(){
+        bitcoinKit.transactions(type = TransactionFilterType.Outgoing)
+            .subscribe { txList: List<TransactionInfo> ->
+                sendTransaction.postValue(txList.first())
+            }
+    }
+
+    fun getAddress() = receivedAddress.postValue(bitcoinKit.receiveAddress())
+
+    fun sendBTC(address: String, amount: Long, feeRate: Int) {
+        try {
+            bitcoinKit.send(
+                address,
+                amount,
+                feeRate = feeRate,
+                sortType = TransactionDataSortType.Shuffle
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

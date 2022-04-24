@@ -156,20 +156,20 @@
             android:layout_height="50dp"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="gone"
             android:foreground="?selectableItemBackground"
+            android:paddingStart="4dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:paddingStart="4dp"
-            android:src="@drawable/ic_microphone_circle" />
+            android:src="@drawable/ic_microphone_circle"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/ivSend"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:paddingStart="4dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:paddingStart="4dp"
             android:src="@drawable/ic_send_message"
             android:tint="@color/orange"
             android:visibility="gone"
@@ -180,10 +180,9 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
+            android:paddingStart="4dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:paddingStart="4dp"
             android:src="@drawable/heart_reaction" />
-
     </LinearLayout>
 </RelativeLayout>

@@ -24,9 +24,9 @@ class CreatingMnemonicFragment : BaseFragment(R.layout.fragment_creating_mnemoni
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.createWallet(CryptoApp.instance)
-        setupListener()
         setupObserver()
+        setupListener()
+        viewModel.createWallet(CryptoApp.instance)
     }
 
     private fun setupListener() {
@@ -39,7 +39,6 @@ class CreatingMnemonicFragment : BaseFragment(R.layout.fragment_creating_mnemoni
             binding.tvMnemonic.text = it.mnemonic()
         }
         viewModel.isOperationCompleted.observe(viewLifecycleOwner){
-            if(it && isBtnClicked) navigate(CreatingMnemonicFragmentDirections.actionCreatingMnemonicFragmentToContactsFragment())
         }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) binding.progressBar.visibility = View.VISIBLE
@@ -49,7 +48,7 @@ class CreatingMnemonicFragment : BaseFragment(R.layout.fragment_creating_mnemoni
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.btnCreateWallet -> isBtnClicked = true
+            R.id.btnCreateWallet -> navigate(CreatingMnemonicFragmentDirections.actionCreatingMnemonicFragmentToContactsFragment())
             R.id.tvCopy -> copy()
         }
     }

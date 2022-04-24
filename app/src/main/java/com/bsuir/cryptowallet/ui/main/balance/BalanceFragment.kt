@@ -12,12 +12,11 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.bsuir.cryptowallet.R
 import com.bsuir.cryptowallet.common.base.BaseFragment
 import com.bsuir.cryptowallet.common.delegate.viewBinding
 import com.bsuir.cryptowallet.databinding.FragmentBalanceBinding
-import com.bsuir.cryptowallet.ui.auth.wallet.WalletViewModel
 import com.bsuir.data.const.KEY_BALANCE
 import com.bsuir.data.source.local.SharedPreferencesUtil
 import com.bsuir.data.utils.NumberFormatHelper
@@ -36,7 +35,7 @@ import javax.inject.Inject
 class BalanceFragment : BaseFragment(R.layout.fragment_balance), View.OnClickListener {
 
     private val binding by viewBinding<FragmentBalanceBinding>()
-    private val viewModel: WalletViewModel by activityViewModels()
+    private val viewModel: BalanceViewModel by viewModels()
 
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private var address: String = ""
@@ -49,11 +48,19 @@ class BalanceFragment : BaseFragment(R.layout.fragment_balance), View.OnClickLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvBalance.text = "${shared.fetchData(requireContext(), KEY_BALANCE, "")} BTC"
-        viewModel.start()
         setupObserver()
-        viewModel.setTransactionFilterType(TransactionFilterType.Outgoing)
         setupClickListener()
+        viewModel.start()
+        if(shared.fetchData(requireContext(), KEY_BALANCE, "").isNotEmpty()){
+            binding.tvBalance.text = "${shared.fetchData(requireContext(), KEY_BALANCE, "")} BTC"
+            viewModel.setTransactionFilterType(TransactionFilterType.Outgoing)
+            viewModel.setOutgoing()
+        } else  {
+            binding.tvBalance.text = "0 BTC"
+            binding.tvSendAmount.text = "0 BTC"
+            binding.tvReceivedAmount.text = "0 BTC"
+        }
+
     }
 
     private fun setupClickListener() {
@@ -64,8 +71,11 @@ class BalanceFragment : BaseFragment(R.layout.fragment_balance), View.OnClickLis
     private fun setupObserver() {
         viewModel.balance.observe(viewLifecycleOwner) {
             viewModel.saveBalance(it.spendable)
-            if (it != null && it.spendable.toString().isNotEmpty()) binding.tvBalance.text =
-                NumberFormatHelper.cryptoAmountFormat.format(it.spendable / 100_000_000.0)
+            if (it != null && it.spendable.toString().isNotEmpty()) {
+                binding.tvBalance.text =
+                    "${NumberFormatHelper.cryptoAmountFormat.format(it.spendable / 100_000_000.0)} BTC"
+            }
+            else binding.tvBalance.text = "0 BTC"
         }
         viewModel.sendTransaction.observe(viewLifecycleOwner) {
             binding.tvSendAmount.text =

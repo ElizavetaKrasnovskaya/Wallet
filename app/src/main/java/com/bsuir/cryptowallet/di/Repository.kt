@@ -20,13 +20,11 @@ import javax.inject.Singleton
 @Module
 object Repository {
 
-    @Singleton
     @Provides
     fun injectApp(): CryptoApp {
         return CryptoApp.instance
     }
 
-    @Singleton
     @Provides
     fun injectSharedPreferences(): SharedPreferencesUtil<String> {
         return SharedPreferencesUtil()

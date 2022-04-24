@@ -4,6 +4,7 @@ import android.Manifest
 import android.Manifest.permission.*
 import android.annotation.TargetApi
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -20,10 +21,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.app.ActivityCompat.startActivityForResult
@@ -38,12 +41,21 @@ import com.cometchat.pro.uikit.ui_resources.utils.Utils
 import com.cometchat.pro.uikit.ui_resources.utils.audio_visualizer.AudioRecordView
 import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.File
 import java.io.IOException
 import java.util.*
-
+import androidx.fragment.app.activityViewModels
+import com.bsuir.data.const.KEY_MNEMONIC
+import com.bsuir.data.source.local.SharedPreferencesUtil
+import io.horizontalsystems.bitcoincore.BitcoinCore
+import io.horizontalsystems.bitcoincore.core.Bip
+import io.horizontalsystems.bitcoinkit.BitcoinKit
+import javax.inject.Inject
 
 class CometChatComposeBox : RelativeLayout, View.OnClickListener {
+
     private var type: String? = null
     public var btnLiveReaction: ImageView? = null
     private var audioRecordView: AudioRecordView? = null

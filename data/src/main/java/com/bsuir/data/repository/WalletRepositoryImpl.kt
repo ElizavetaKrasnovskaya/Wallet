@@ -25,6 +25,8 @@ private val context: Context
     override fun createWallet(context: Application): HDWallet {
         val wallet = HDWallet(128, "")
         shared.saveData(context, KEY_MNEMONIC, wallet.mnemonic().toString())
+        val mnemonic = shared.fetchData(context, KEY_MNEMONIC, "")
+        print(mnemonic)
 //        val words = wallet.mnemonic().toString().split(" ")
 //        val passphrase = ""
 //        bitcoinKit = BitcoinKit(
@@ -43,6 +45,8 @@ private val context: Context
     override fun importWallet(mnemonic: String, context: Application): HDWallet {
         val wallet = HDWallet(mnemonic, "")
         shared.saveData(context, KEY_MNEMONIC, wallet.mnemonic().toString())
+        val mnemonic = shared.fetchData(context, KEY_MNEMONIC, "")
+        print(mnemonic)
 //        val words = mnemonic.split(" ")
 //        val passphrase = ""
 //        bitcoinKit = BitcoinKit(
