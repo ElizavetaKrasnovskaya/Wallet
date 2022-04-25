@@ -5,7 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bsuir.cryptowallet.CryptoApp
 import com.bsuir.cryptowallet.R
@@ -19,7 +18,7 @@ class CreatingMnemonicFragment : BaseFragment(R.layout.fragment_creating_mnemoni
     View.OnClickListener {
 
     private val binding by viewBinding<FragmentCreatingMnemonicBinding>()
-    private val viewModel: WalletViewModel by activityViewModels()
+    private val viewModel: WalletViewModel by viewModels()
     private var isBtnClicked = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class CreatingMnemonicFragment : BaseFragment(R.layout.fragment_creating_mnemoni
         viewModel.wallet.observe(viewLifecycleOwner) {
             binding.tvMnemonic.text = it.mnemonic()
         }
-        viewModel.isOperationCompleted.observe(viewLifecycleOwner){
+        viewModel.isOperationCompleted.observe(viewLifecycleOwner) {
         }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) binding.progressBar.visibility = View.VISIBLE

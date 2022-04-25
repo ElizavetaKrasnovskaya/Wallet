@@ -4,7 +4,7 @@ import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.bsuir.cryptowallet.CryptoApp
 import com.bsuir.cryptowallet.R
 import com.bsuir.cryptowallet.common.base.BaseFragment
@@ -17,7 +17,7 @@ class ImportingMnemonicFragment : BaseFragment(R.layout.fragment_importing_mnemo
     View.OnClickListener {
 
     private val binding by viewBinding<FragmentImportingMnemonicBinding>()
-    private val viewModel: WalletViewModel by activityViewModels()
+    private val viewModel: WalletViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
