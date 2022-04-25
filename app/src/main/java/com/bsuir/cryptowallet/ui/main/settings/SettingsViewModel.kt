@@ -59,6 +59,7 @@ class SettingsViewModel @Inject constructor(
     fun logout() {
         CometChat.logout(object : CometChat.CallbackListener<String?>() {
             override fun onSuccess(s: String?) {
+                shared.saveData(context, KEY_MNEMONIC, "")
                 out.postValue(true)
             }
 
