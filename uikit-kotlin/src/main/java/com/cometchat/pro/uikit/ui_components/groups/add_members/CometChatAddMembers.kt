@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cometchat.pro.constants.CometChatConstants
 import com.cometchat.pro.core.CometChat.CallbackListener

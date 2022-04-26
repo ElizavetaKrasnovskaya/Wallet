@@ -75,6 +75,7 @@ class WalletViewModel @Inject constructor(
         bitcoinKit.listener = this
         bitcoinKit.start()
         bitcoinKit.balance
+        isOperationCompleted.postValue(true)
     }
 
     fun saveBalance(balance: Long) {
