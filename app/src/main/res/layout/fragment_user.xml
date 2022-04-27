@@ -89,5 +89,9 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/cometchat_user_list_item" />
 
-    <include layout="@layout/user_shimmer" />
+    <include layout="@layout/user_shimmer"
+        android:layout_alignTop="@id/rv_user_list"
+        android:layout_alignBottom="@id/rv_user_list"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"/>
 </RelativeLayout>

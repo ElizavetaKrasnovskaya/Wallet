@@ -101,6 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/no_conversations"
+                android:textColor="@color/textColorWhite"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
 
@@ -113,5 +114,9 @@
 
     </LinearLayout>
 
-    <include layout="@layout/conversation_shimmer" />
+    <include layout="@layout/conversation_shimmer"
+        android:layout_alignBottom="@id/rv_conversation_list"
+        android:layout_alignTop="@id/rv_conversation_list"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"/>
 </RelativeLayout>

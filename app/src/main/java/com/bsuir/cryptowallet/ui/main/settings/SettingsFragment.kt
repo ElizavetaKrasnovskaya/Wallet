@@ -44,7 +44,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings), View.OnClickL
     private fun setupObserver() {
         viewModel.user.observe(viewLifecycleOwner) {
             binding.tvName.text = it.name
-            Glide.with(requireView()).load(it.link).into(binding.ivPhoto)
         }
         viewModel.deleted.observe(viewLifecycleOwner) {
             if (it) navigate(SettingsFragmentDirections.actionSettingsFragmentToSplashFragment())

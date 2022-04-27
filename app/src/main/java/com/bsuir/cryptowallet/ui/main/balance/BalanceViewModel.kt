@@ -41,8 +41,6 @@ class BalanceViewModel @Inject constructor(
     private val bip = Bip.BIP44
     private val passphrase = ""
     private lateinit var bitcoinKit: BitcoinKit
-    private val disposables = CompositeDisposable()
-    private val disposables2 = CompositeDisposable()
     private var transactionFilterType: TransactionFilterType? = null
 
     fun start() {
