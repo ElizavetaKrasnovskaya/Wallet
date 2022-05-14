@@ -49,10 +49,12 @@
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/conversation_shimmer_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/custom_send.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/fragment_about_app.xml" value="0.264" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/fragment_chat_list.xml" value="0.25" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/fragment_creating_mnemonic.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/fragment_settings.xml" value="0.17527173913043478" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/fragment_user.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/OK/StudioProjects/Wallet/app/src/main/res/layout/fragment_wallet_info.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/groups/layout/activity_cometchat_group_detail.xml" value="0.4" />
         <entry key="..\:/Users/OK/StudioProjects/Wallet/uikit-kotlin/src/main/res/layouts/groups/layout/fragment_cometchat_add_member.xml" value="0.1" />
         <entry key="..\:/Users/OK/StudioProjects/wallet/app/src/main/res/drawable/ic_wallet.xml" value="0.1" />
